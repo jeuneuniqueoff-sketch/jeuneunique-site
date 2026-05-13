@@ -1,0 +1,11 @@
+DOSSIER : Logo
+==============
+Mets ici tes fichiers logo JeuneUnique.
+
+Formats acceptés : SVG (préféré), PNG avec fond transparent
+Fichiers attendus :
+  - logo.svg          → logo principal (double JJ + étoile dorée)
+  - logo-blanc.svg    → version blanche pour fond sombre
+  - logo-gold.svg     → version dorée si tu en as une
+
+Si tu as plusieurs versions (couleur, noir, blanc) mets-les toutes ici.

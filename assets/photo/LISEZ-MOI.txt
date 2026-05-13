@@ -1,0 +1,11 @@
+DOSSIER : Photo
+===============
+Mets ici tes photos personnelles.
+
+Fichiers attendus :
+  - portrait.jpg      → photo principale (t-shirt noir, setup podcast, fond sobre)
+
+Conseils :
+  - Résolution minimum : 800x800px
+  - Format JPG ou PNG
+  - Si tu as plusieurs photos mets-les toutes, on choisira ensemble

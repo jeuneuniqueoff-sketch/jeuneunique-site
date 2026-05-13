@@ -10,8 +10,9 @@ const FORMATIONS = [
     soustitre: "Lance ton activité de mandataire auto et génère tes premières commissions",
     description: "Tout ce qu'il faut pour créer, structurer et monétiser une activité de mandataire automobile — sans stock, sans local, sans diplôme.",
     prix: 37,
-    stripeLink: "#", // Remplacer par le lien Stripe
-    previewVideo: "REMPLACER_ID_YOUTUBE", // ID YouTube de ta vidéo gratuite (ex: "dQw4w9WgXcQ")
+    cover: "assets/formations-covers/agence-automobile.png",
+    stripeLink: "#",
+    previewVideo: "REMPLACER_ID_YOUTUBE",
     previewLabel: "Introduction : comment fonctionne le marché mandataire",
     bestseller: true,
     contenu: [
@@ -46,6 +47,7 @@ const FORMATIONS = [
     soustitre: "Sois payé pour mettre les bonnes personnes en relation",
     description: "Le guide complet pour créer une activité d'intermédiaire — sans compétence technique, sans investissement, juste avec ton réseau et ta capacité à identifier les bonnes opportunités.",
     prix: 47,
+    cover: "assets/formations-covers/Pack intermédiation.png",
     stripeLink: "#",
     previewVideo: "REMPLACER_ID_YOUTUBE",
     previewLabel: "C'est quoi l'intermédiation ? La vidéo de 8 min qui explique tout",
@@ -76,74 +78,46 @@ const FORMATIONS = [
     ]
   },
   {
-    id: "zero-a-100k",
+    id: "premier-appartement",
     univers: "investissement",
-    titre: "De 0 à 100K en 5 ans",
-    soustitre: "Le plan concret pour construire ton premier capital depuis zéro",
-    description: "Pas de promesse de richesse rapide. Un plan réaliste, actionnable, pour quelqu'un qui part de zéro et veut atteindre 100 000€ de patrimoine en 5 ans avec un salaire normal.",
+    titre: "Acheter son premier appartement",
+    soustitre: "Le guide complet pour trouver, financer et sécuriser ton premier bien immobilier",
+    description: "Tout ce qu'il faut savoir pour acheter son premier appartement sans se faire piéger — de la recherche du bien jusqu'à la signature chez le notaire.",
     prix: 37,
+    cover: "assets/formations-covers/Investisement 1er Appartement.png",
     stripeLink: "#",
     previewVideo: "REMPLACER_ID_YOUTUBE",
-    previewLabel: "Pourquoi la plupart des gens n'investissent jamais — et comment briser ce cycle",
-    bestseller: true,
+    previewLabel: "Les 3 erreurs qui font rater son premier achat immobilier",
+    bestseller: false,
     contenu: [
-      "L'état d'esprit pour construire sur la durée",
-      "Calculer son taux d'épargne réel et l'optimiser",
-      "Les 4 véhicules d'investissement accessibles sans capital initial",
-      "PEA, assurance-vie, SCPI : comment les utiliser vraiment",
-      "Investir en bourse sans se faire brûler",
-      "Le plan mois par mois sur 5 ans"
+      "Définir son projet et ses critères de recherche",
+      "Comprendre le financement : prêt immobilier, PTZ, apport",
+      "Comment analyser et visiter un bien efficacement",
+      "Négocier le prix : techniques et arguments concrets",
+      "Les étapes juridiques : offre, compromis, notaire",
+      "Éviter les pièges et les mauvaises surprises"
     ],
     livrable: {
       ebook: true,
-      video: "28 min",
-      outils: ["Calculateur d'épargne 5 ans", "Tracker de patrimoine", "Simulateur PEA"],
+      video: "35 min",
+      outils: [
+        "Feuille de calcul capacité d'emprunt",
+        "Simulateur de mensualités",
+        "Checklist visite d'appartement",
+        "Modèle d'offre d'achat",
+        "Tableau de comparaison des biens"
+      ],
       prompts: 6
     },
     pourQui: [
-      "Tu gagnes entre 1500€ et 3500€ net par mois",
-      "Tu n'as jamais investi et tu ne sais pas par où commencer",
-      "Tu veux un plan clair sans jargon financier inutile"
+      "Tu veux acheter ton premier bien mais tu ne sais pas par où commencer",
+      "Tu veux comprendre le financement sans jargon bancaire",
+      "Tu veux négocier et ne pas payer trop cher"
     ],
     faq: [
-      { q: "Est-ce réellement possible sans salaire élevé ?", r: "Oui. Le plan est calibré pour un salaire médian français. L'optimisation du taux d'épargne fait la différence." },
-      { q: "Est-ce qu'il faut prendre des risques importants ?", r: "Non. Le plan utilise des véhicules régulés et diversifiés. La prise de risque est progressive et maîtrisée." },
-      { q: "Est-ce adapté aux étudiants ou aux personnes avec peu de revenus ?", r: "Partiellement. Le plan est optimisé pour des revenus stables. Une section est dédiée aux petits budgets." }
-    ]
-  },
-  {
-    id: "frameworks-decisions",
-    univers: "mindset",
-    titre: "Frameworks de Décision",
-    soustitre: "Décide mieux et plus vite — les outils mentaux des entrepreneurs qui avancent",
-    description: "5 frameworks concrets pour prendre de meilleures décisions professionnelles et personnelles. Moins d'hésitation, moins de regrets, plus de clarté.",
-    prix: 27,
-    stripeLink: "#",
-    previewVideo: "REMPLACER_ID_YOUTUBE",
-    previewLabel: "Le framework 10/10/10 — prendre une décision difficile en 3 minutes",
-    bestseller: false,
-    contenu: [
-      "Pourquoi on prend de mauvaises décisions (biais cognitifs essentiels)",
-      "Le framework 10/10/10 : dans 10 min, 10 mois, 10 ans",
-      "La matrice risque/réversibilité pour savoir quand foncer",
-      "Comment décider sous pression ou incertitude",
-      "Le journal de décisions : apprendre de ses choix",
-      "Exercices pratiques pour chaque framework"
-    ],
-    livrable: {
-      ebook: true,
-      video: "20 min",
-      outils: ["Cartes frameworks imprimables", "Journal de décisions template"],
-      prompts: 5
-    },
-    pourQui: [
-      "Tu rumines et tu peines à décider",
-      "Tu veux un système clair pour avancer sans bloquer",
-      "Tu es entrepreneur ou tu veux le devenir"
-    ],
-    faq: [
-      { q: "Ces frameworks sont-ils vraiment applicables au quotidien ?", r: "Oui, ils sont conçus pour être simples et rapides à utiliser. Pas de théorie, que du pratique." },
-      { q: "Convient-il aux décisions personnelles aussi bien que pro ?", r: "Absolument. Les frameworks s'adaptent aux deux contextes avec des exemples dans chaque cas." }
+      { q: "Faut-il obligatoirement un apport ?", r: "Non, il est possible d'emprunter sans apport. La formation t'explique comment monter un dossier solide dans ce cas." },
+      { q: "Est-ce adapté si je suis encore locataire ?", r: "Oui, c'est même le profil idéal. La formation part de zéro et t'accompagne étape par étape." },
+      { q: "Les outils de calcul sont-ils inclus ?", r: "Oui. Tu reçois des feuilles de calcul prêtes à l'emploi pour simuler ton prêt, comparer les biens et calculer ta capacité d'emprunt." }
     ]
   }
 ];
@@ -181,8 +155,12 @@ function renderFormationCard(formation) {
   const badge = BADGE_CLASS[formation.univers] || '';
   const univers = UNIVERS.find(u => u.id === formation.univers);
   const hasPreview = formation.previewVideo && formation.previewVideo !== 'REMPLACER_ID_YOUTUBE';
+  const coverHtml = formation.cover
+    ? `<div class="formation-card__cover"><img src="${formation.cover}" alt="${formation.titre}" loading="lazy"></div>`
+    : '';
   return `
     <a href="formation.html?id=${formation.id}" class="formation-card">
+      ${coverHtml}
       <div class="formation-card__body">
         <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px;">
           <span class="formation-card__badge ${badge}" style="margin-bottom:0;">

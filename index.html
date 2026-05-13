@@ -45,46 +45,25 @@
     <a href="formations.html"      class="btn btn--primary btn--lg">Voir les formations</a>
   </div>
 
-  <!-- HERO — Banner Style -->
-  <section class="hero-v2">
-    <div class="hero-v2__bg"></div>
+  <!-- HERO — Gradient élégant -->
+  <section class="hero-etheral">
 
-    <!-- Arcs décoratifs -->
-    <div class="hero-v2__arcs">
-      <svg viewBox="0 0 400 400" fill="none">
-        <circle cx="200" cy="200" r="180" stroke="#C9A84C" stroke-width="1"/>
-        <circle cx="200" cy="200" r="140" stroke="#C9A84C" stroke-width="0.5"/>
-        <circle cx="200" cy="200" r="100" stroke="#C9A84C" stroke-width="0.5"/>
-      </svg>
-    </div>
+    <!-- Faisceaux lumineux animés -->
+    <canvas id="hero-canvas" class="hero-canvas"></canvas>
+    <div class="hero-overlay"></div>
 
-    <!-- COLONNE GAUCHE : logo cercle beige -->
-    <div class="hero-v2__left">
-      <div class="hero-v2__logo-circle">
-        <div class="hero-v2__logo-circle-bg">
-          <div style="position:relative;display:flex;flex-direction:column;align-items:center;">
-            <div class="hero-v2__star">★</div>
-            <div class="hero-v2__logo-jj">JJ</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- COLONNE CENTRE : headline + CTA -->
-    <div class="hero-v2__center">
-      <div class="hero-v2__tag">
-        <span class="hero-v2__tag-item">Conseil</span>
-        <span class="hero-v2__tag-dot"></span>
-        <span class="hero-v2__tag-item">Entrepreneuriat</span>
-        <span class="hero-v2__tag-dot"></span>
-        <span class="hero-v2__tag-item">Impact</span>
-      </div>
-      <h1 class="hero-v2__title">Brisez les barrières</h1>
-      <div class="hero-v2__title-gold">et créez votre<br>propre chemin</div>
-      <p class="hero-v2__sub">
-        Des formations concrètes pour les 20–30 ans ambitieux. Automobile, intermédiation, investissement, mindset — zéro théorie inutile.
-      </p>
-      <div class="hero-v2__actions">
+    <!-- Contenu centré -->
+    <div class="hero-etheral__content">
+      <img
+        src="assets/logo/Logo 2k26 Noir.png"
+        alt="JeuneUnique"
+        class="hero-etheral__logo"
+      >
+      <h1 class="hero-etheral__title">
+        Brisez les barrières<br>
+        <span class="hero-etheral__title-gold">Et créez votre propre chemin</span>
+      </h1>
+      <div class="hero-etheral__actions">
         <a href="formations.html" class="btn btn--primary btn--lg">
           Voir les formations <span class="arrow">→</span>
         </a>
@@ -92,40 +71,11 @@
           Contenu gratuit
         </a>
       </div>
-      <div class="hero-v2__stats">
-        <div>
-          <div class="hero-v2__stat-value">5</div>
-          <div class="hero-v2__stat-label">Univers business</div>
-        </div>
-        <div>
-          <div class="hero-v2__stat-value">1×</div>
-          <div class="hero-v2__stat-label">Paiement unique</div>
-        </div>
-        <div>
-          <div class="hero-v2__stat-value">0</div>
-          <div class="hero-v2__stat-label">Bullshit</div>
-        </div>
-      </div>
     </div>
 
-    <!-- COLONNE DROITE : portrait + cercles activités -->
-    <div class="hero-v2__right">
-      <!-- Ta photo ici : remplace par <img src="assets/images/portrait.png" class="hero-v2__photo" alt="JeuneUnique"> -->
-      <div class="hero-v2__photo-placeholder">
-        <div class="hero-v2__photo-silhouette">
-          <span style="font-size:3rem;opacity:0.3;">👤</span>
-          <span class="label" style="color:rgba(255,255,255,0.2);font-size:0.55rem;text-align:center;">Portrait à placer<br>assets/images/portrait.png</span>
-        </div>
-      </div>
-      <!-- Cercles décoratifs (activités) -->
-      <div class="hero-v2__circles">
-        <div class="hero-v2__circle-item">🚗</div>
-        <div class="hero-v2__circle-item">📈</div>
-        <div class="hero-v2__circle-item">🎙️</div>
-        <div class="hero-v2__circle-item">🤝</div>
-      </div>
-      <!-- Dégradé bas -->
-      <div style="position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(to top,var(--navy) 0%,transparent 100%);pointer-events:none;"></div>
+    <!-- Indicateur scroll -->
+    <div class="hero-etheral__scroll">
+      <div class="hero-scroll-bar"></div>
     </div>
 
   </section>

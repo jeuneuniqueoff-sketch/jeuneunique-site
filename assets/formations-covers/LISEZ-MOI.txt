@@ -1,0 +1,12 @@
+DOSSIER : Formations Covers
+===========================
+Mets ici les visuels/couvertures de tes formations (optionnel).
+
+Format recommandé : 16/9 ou carré (JPG ou PNG)
+Exemple de nommage :
+  - agence-automobile.jpg
+  - pack-intermediation.jpg
+  - 100k-5-ans.jpg
+
+Si tu n'as pas encore de visuels, pas de souci — on peut générer
+des covers avec l'identité visuelle JeuneUnique directement en code.

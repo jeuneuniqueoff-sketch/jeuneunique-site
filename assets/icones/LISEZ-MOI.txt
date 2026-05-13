@@ -1,0 +1,8 @@
+DOSSIER : Icones
+================
+Mets ici les icones personnalisées si tu en as (optionnel).
+
+Exemples : favicon, icone app, badges personnalisés
+Format : SVG ou PNG
+
+Si tu n'as rien ici, on utilisera les icones déjà intégrées dans le code.
