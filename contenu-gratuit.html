@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tout le contenu gratuit JeuneUnique — YouTube, Podcasts, Instagram, TikTok.">
+  <title>Contenu gratuit — JeuneUnique</title>
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    .platform-card {
+      background: var(--navy-80);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius-xl);
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transition: all 0.3s ease;
+    }
+    .platform-card:hover {
+      border-color: rgba(201,168,76,0.2);
+    }
+    .platform-card__icon {
+      font-size: 2.5rem;
+      width: 64px;
+      height: 64px;
+      background: rgba(255,255,255,0.04);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .platform-card__name {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    .platform-card__desc {
+      font-size: 0.9rem;
+      color: var(--gray-400);
+      line-height: 1.7;
+      flex: 1;
+    }
+    .podcast-episode {
+      display: flex;
+      gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      align-items: center;
+    }
+    .podcast-episode:last-child { border-bottom: none; }
+    .podcast-num {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--gold);
+      opacity: 0.5;
+      min-width: 48px;
+    }
+    .podcast-title {
+      font-weight: 500;
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+    .podcast-meta {
+      font-size: 0.8rem;
+      color: var(--gray-400);
+    }
+    .podcast-play {
+      margin-left: auto;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+      transition: all var(--transition);
+      color: var(--gold);
+    }
+    .podcast-play:hover {
+      background: var(--gold);
+      color: var(--navy);
+      border-color: var(--gold);
+    }
+    .video-card {
+      background: var(--navy-80);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    .video-card:hover {
+      border-color: rgba(201,168,76,0.3);
+      transform: translateY(-4px);
+    }
+    .video-card__thumb {
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, var(--navy-60), var(--navy-80));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      position: relative;
+    }
+    .video-card__play {
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      background: rgba(201,168,76,0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: var(--navy);
+    }
+    .video-card__body { padding: 20px; }
+    .video-card__badge {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .video-card__title {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 600;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+    .video-card__meta { font-size: 0.8rem; color: var(--gray-400); }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">Jeune<span>Unique</span></a>
+      <div class="nav__links">
+        <a href="formations.html"      class="nav__link">Formations</a>
+        <a href="contenu-gratuit.html" class="nav__link">Contenu gratuit</a>
+        <a href="a-propos.html"        class="nav__link">À propos</a>
+        <a href="formations.html"      class="btn btn--primary nav__cta">Voir les formations</a>
+      </div>
+      <button class="nav__hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav__mobile">
+    <a href="formations.html"      class="nav__link">Formations</a>
+    <a href="contenu-gratuit.html" class="nav__link">Contenu gratuit</a>
+    <a href="a-propos.html"        class="nav__link">À propos</a>
+  </div>
+
+  <!-- HERO -->
+  <section style="padding:140px 24px 80px;background:#070d18;position:relative;overflow:hidden;">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 50% 60% at 80% 50%,rgba(201,168,76,0.05) 0%,transparent 70%);pointer-events:none;"></div>
+    <div class="container--narrow" style="position:relative;">
+      <span class="label gold reveal">Gratuit</span>
+      <h1 class="display-lg mt-16 reveal">
+        Tout le contenu.<br>100% gratuit.
+      </h1>
+      <div class="divider mt-24 mb-24 reveal"></div>
+      <p class="text-xl muted reveal" style="line-height:1.7;">
+        YouTube, Instagram, TikTok, Podcasts — retrouve tout le contenu JeuneUnique ici. La profondeur et les outils, c'est dans les formations.
+      </p>
+    </div>
+  </section>
+
+  <!-- PLATEFORMES -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label">Où me retrouver</span>
+        <h2 class="display-md mt-16">4 plateformes</h2>
+        <div class="divider mt-24"></div>
+      </div>
+      <div class="grid-4" style="gap:20px;">
+        <div class="platform-card reveal reveal--delay-1">
+          <div class="platform-card__icon">▶</div>
+          <div class="platform-card__name">YouTube</div>
+          <p class="platform-card__desc">Vidéos de fond sur chaque univers business. Automobile, intermédiation, investissement, mindset.</p>
+          <a href="#" class="btn btn--outline btn--sm">Voir la chaîne <span class="arrow">→</span></a>
+        </div>
+        <div class="platform-card reveal reveal--delay-2">
+          <div class="platform-card__icon">◈</div>
+          <div class="platform-card__name">Instagram</div>
+          <p class="platform-card__desc">Tips quotidiens, coulisses, chiffres concrets et idées business en format court.</p>
+          <a href="#" class="btn btn--outline btn--sm">Suivre <span class="arrow">→</span></a>
+        </div>
+        <div class="platform-card reveal reveal--delay-3">
+          <div class="platform-card__icon">♪</div>
+          <div class="platform-card__name">TikTok</div>
+          <p class="platform-card__desc">Formats ultra-courts : une idée business, un framework, un chiffre qui change la perspective.</p>
+          <a href="#" class="btn btn--outline btn--sm">Suivre <span class="arrow">→</span></a>
+        </div>
+        <div class="platform-card reveal reveal--delay-4">
+          <div class="platform-card__icon">◎</div>
+          <div class="platform-card__name">Spotify / Apple</div>
+          <p class="platform-card__desc">Le podcast avec des invités entrepreneurs francophones. Des conversations sans filtre.</p>
+          <a href="#" class="btn btn--outline btn--sm">Écouter <span class="arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DERNIÈRES VIDÉOS -->
+  <section class="section section--navy80" id="youtube">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label">YouTube</span>
+        <h2 class="display-md mt-16">Dernières vidéos</h2>
+        <div class="divider mt-24"></div>
+      </div>
+      <div class="grid-3" style="gap:24px;">
+        <!-- Vidéo 1 -->
+        <a href="#" class="video-card reveal reveal--delay-1">
+          <div class="video-card__thumb">
+            🚗
+            <div class="video-card__play">▶</div>
+          </div>
+          <div class="video-card__body">
+            <div class="video-card__badge">🚗 Automobile</div>
+            <h3 class="video-card__title">Comment trouver son premier client mandataire auto en 7 jours</h3>
+            <div class="video-card__meta">12 min · [À remplacer par ton lien YouTube]</div>
+          </div>
+        </a>
+        <!-- Vidéo 2 -->
+        <a href="#" class="video-card reveal reveal--delay-2">
+          <div class="video-card__thumb">
+            🤝
+            <div class="video-card__play">▶</div>
+          </div>
+          <div class="video-card__body">
+            <div class="video-card__badge">🤝 Intermédiation</div>
+            <h3 class="video-card__title">J'ai gagné 1200€ en mettant 2 personnes en relation — voici comment</h3>
+            <div class="video-card__meta">9 min · [À remplacer par ton lien YouTube]</div>
+          </div>
+        </a>
+        <!-- Vidéo 3 -->
+        <a href="#" class="video-card reveal reveal--delay-3">
+          <div class="video-card__thumb">
+            📈
+            <div class="video-card__play">▶</div>
+          </div>
+          <div class="video-card__body">
+            <div class="video-card__badge">📈 Investissement</div>
+            <h3 class="video-card__title">Ouvrir un PEA en 2025 — le guide complet pour débutant</h3>
+            <div class="video-card__meta">15 min · [À remplacer par ton lien YouTube]</div>
+          </div>
+        </a>
+      </div>
+      <div class="text-center mt-40 reveal">
+        <a href="#" class="btn btn--outline btn--lg">
+          Toutes les vidéos sur YouTube <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PODCASTS -->
+  <section class="section" id="podcasts">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label">Podcasts</span>
+        <h2 class="display-md mt-16">Conversations d'entrepreneurs</h2>
+        <div class="divider mt-24"></div>
+        <p class="muted mt-16">Des invités francophones qui ont construit quelque chose de réel. Pas de success washing.</p>
+      </div>
+
+      <div class="reveal" style="background:var(--navy-80);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-xl);padding:32px 40px;">
+        <!-- Episode 1 -->
+        <div class="podcast-episode">
+          <span class="podcast-num">01</span>
+          <div>
+            <div class="podcast-title">[Titre épisode 1 — À remplacer]</div>
+            <div class="podcast-meta">Invité · Durée · Date</div>
+          </div>
+          <a href="#" class="podcast-play" aria-label="Écouter">▶</a>
+        </div>
+        <!-- Episode 2 -->
+        <div class="podcast-episode">
+          <span class="podcast-num">02</span>
+          <div>
+            <div class="podcast-title">[Titre épisode 2 — À remplacer]</div>
+            <div class="podcast-meta">Invité · Durée · Date</div>
+          </div>
+          <a href="#" class="podcast-play" aria-label="Écouter">▶</a>
+        </div>
+        <!-- Episode 3 -->
+        <div class="podcast-episode">
+          <span class="podcast-num">03</span>
+          <div>
+            <div class="podcast-title">[Titre épisode 3 — À remplacer]</div>
+            <div class="podcast-meta">Invité · Durée · Date</div>
+          </div>
+          <a href="#" class="podcast-play" aria-label="Écouter">▶</a>
+        </div>
+      </div>
+
+      <div class="flex gap-16 mt-32 reveal" style="flex-wrap:wrap;">
+        <a href="#" class="btn btn--outline">
+          ◎ Spotify
+        </a>
+        <a href="#" class="btn btn--outline">
+          Apple Podcasts
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FORMATIONS -->
+  <section class="section section--darker" id="instagram">
+    <div class="container--narrow text-center">
+      <div class="reveal">
+        <span class="label gold">Tu veux aller plus loin ?</span>
+        <h2 class="display-md mt-16">
+          Le contenu gratuit te donne le "quoi".<br>
+          <em>Les formations te donnent le "comment".</em>
+        </h2>
+        <div class="divider divider--center mt-24 mb-24"></div>
+        <p class="muted mb-40" style="max-width:480px;margin-left:auto;margin-right:auto;line-height:1.7;">
+          Plans d'action détaillés, outils IA, templates, accès à vie. Paiement unique à partir de 27€.
+        </p>
+        <a href="formations.html" class="btn btn--primary btn--lg">
+          Voir les formations <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__top">
+        <div>
+          <div class="footer__brand-name">Jeune<span>Unique</span></div>
+          <p class="footer__tagline">Le média business pour les 20–30 ans ambitieux.</p>
+          <div class="footer__socials">
+            <a href="#" class="social-icon">▶</a>
+            <a href="#" class="social-icon">◈</a>
+            <a href="#" class="social-icon">♪</a>
+            <a href="#" class="social-icon">◎</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__col-title">Formations</div>
+          <div class="footer__links">
+            <a href="formations.html" class="footer__link">Catalogue</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__col-title">Contenu</div>
+          <div class="footer__links">
+            <a href="#youtube"   class="footer__link">YouTube</a>
+            <a href="#podcasts"  class="footer__link">Podcasts</a>
+            <a href="#instagram" class="footer__link">Instagram</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__col-title">Info</div>
+          <div class="footer__links">
+            <a href="a-propos.html" class="footer__link">À propos</a>
+            <a href="mailto:contact@jeuneunique.fr" class="footer__link">Contact</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2025 JeuneUnique. Tous droits réservés.</span>
+        <span>Paiement sécurisé par Stripe</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/formations.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

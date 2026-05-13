@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formation — JeuneUnique</title>
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    /* Styles spécifiques page formation */
+    .formation-hero {
+      padding: 140px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .formation-hero__bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 70% 50%, rgba(201,168,76,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .formation-layout {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 48px;
+      align-items: start;
+    }
+    .formation-sidebar {
+      position: sticky;
+      top: 96px;
+    }
+    .formation-sidebar__card {
+      background: var(--navy-80);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: var(--radius-xl);
+      padding: 32px;
+    }
+    .formation-sidebar__price-block {
+      text-align: center;
+      padding-bottom: 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      margin-bottom: 24px;
+    }
+    .formation-sidebar__price {
+      font-family: var(--font-serif);
+      font-size: 3rem;
+      font-weight: 600;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .formation-sidebar__once {
+      font-size: 0.8rem;
+      color: var(--gray-400);
+      margin-top: 6px;
+    }
+    .formation-sidebar__cta {
+      width: 100%;
+      justify-content: center;
+      margin-bottom: 12px;
+      font-size: 1rem;
+      padding: 18px;
+    }
+    .formation-sidebar__guarantee {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: var(--gray-400);
+      justify-content: center;
+      margin-top: 12px;
+    }
+    .includes-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .includes-chip {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.85rem;
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.04);
+      border-radius: var(--radius-sm);
+    }
+    .plan-item {
+      display: flex;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .plan-item:last-child { border-bottom: none; }
+    .plan-item__num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(201,168,76,0.12);
+      color: var(--gold);
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .plan-item__text { font-size: 0.9rem; color: var(--gray-400); line-height: 1.5; }
+
+    @media (max-width: 900px) {
+      .formation-layout {
+        grid-template-columns: 1fr;
+      }
+      .formation-sidebar {
+        position: static;
+        order: -1;
+      }
+    }
+
+    /* Preview video */
+    .preview-section {
+      background: var(--navy-80);
+      border: 1px solid rgba(52, 211, 153, 0.2);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      margin-bottom: 64px;
+    }
+    .preview-section__header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 20px 28px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: rgba(52,211,153,0.04);
+    }
+    .preview-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(52,211,153,0.15);
+      color: #34d399;
+      padding: 5px 12px;
+      border-radius: 100px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .preview-section__label {
+      font-size: 0.9rem;
+      color: var(--gray-400);
+    }
+    .preview-section__label strong {
+      color: var(--beige);
+    }
+    .preview-video-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #070d18;
+    }
+    .preview-video-wrapper iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    /* Placeholder quand la vidéo n'est pas encore configurée */
+    .preview-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      background: linear-gradient(135deg, var(--navy-80), #070d18);
+      cursor: default;
+    }
+    .preview-placeholder__icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: rgba(201,168,76,0.1);
+      border: 1px solid rgba(201,168,76,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+    .preview-placeholder__text {
+      font-size: 0.85rem;
+      color: var(--gray-400);
+      text-align: center;
+      max-width: 320px;
+      line-height: 1.6;
+    }
+    .preview-placeholder__code {
+      font-size: 0.75rem;
+      color: var(--gray-600);
+      font-family: monospace;
+      background: rgba(255,255,255,0.04);
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      margin-top: 4px;
+    }
+    .preview-section__footer {
+      padding: 16px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .preview-section__footer-text {
+      font-size: 0.85rem;
+      color: var(--gray-400);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">Jeune<span>Unique</span></a>
+      <div class="nav__links">
+        <a href="formations.html"      class="nav__link">Formations</a>
+        <a href="contenu-gratuit.html" class="nav__link">Contenu gratuit</a>
+        <a href="a-propos.html"        class="nav__link">À propos</a>
+        <a href="formations.html"      class="btn btn--primary nav__cta">Voir les formations</a>
+      </div>
+      <button class="nav__hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav__mobile">
+    <a href="formations.html"      class="nav__link">Formations</a>
+    <a href="contenu-gratuit.html" class="nav__link">Contenu gratuit</a>
+    <a href="a-propos.html"        class="nav__link">À propos</a>
+  </div>
+
+  <!-- HERO FORMATION -->
+  <section class="formation-hero">
+    <div class="formation-hero__bg"></div>
+    <div class="container">
+      <!-- Breadcrumb -->
+      <div class="breadcrumb">
+        <a href="index.html">Accueil</a>
+        <span>/</span>
+        <a href="formations.html">Formations</a>
+        <span>/</span>
+        <span id="breadcrumb-title">Formation</span>
+      </div>
+
+      <!-- Badge + titre -->
+      <div class="mb-16" id="formation-badge"></div>
+      <h1 class="display-lg mb-16" id="formation-titre"></h1>
+      <p class="text-xl muted" id="formation-soustitre" style="max-width:600px;"></p>
+    </div>
+  </section>
+
+  <!-- APERÇU VIDÉO GRATUIT -->
+  <section class="section--sm" style="padding-bottom:0;" id="preview-section-wrapper">
+    <div class="container">
+      <div class="preview-section reveal" id="preview-block">
+        <div class="preview-section__header">
+          <span class="preview-badge">▶ Aperçu gratuit</span>
+          <span class="preview-section__label" id="preview-label">Regarde avant d'acheter</span>
+        </div>
+        <div class="preview-video-wrapper" id="preview-video-wrapper">
+          <!-- Rempli par JS -->
+        </div>
+        <div class="preview-section__footer">
+          <span class="preview-section__footer-text">
+            💡 Cette vidéo est offerte. La formation complète va beaucoup plus loin.
+          </span>
+          <a href="#" class="btn btn--primary btn--sm stripe-link">
+            Obtenir la formation complète <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENU PRINCIPAL -->
+  <section class="section--sm">
+    <div class="container">
+      <div class="formation-layout">
+
+        <!-- COLONNE GAUCHE -->
+        <div>
+
+          <!-- Ce que tu vas apprendre -->
+          <div class="mb-48 reveal">
+            <div class="gold-line">
+              <h2 class="display-md" style="font-size:1.75rem;">Ce que tu vas apprendre</h2>
+            </div>
+            <div class="includes-list mt-24" id="formation-contenu">
+              <!-- Généré par JS -->
+            </div>
+          </div>
+
+          <!-- Ce que tu reçois -->
+          <div class="mb-48 reveal">
+            <div class="gold-line">
+              <h2 class="display-md" style="font-size:1.75rem;">Ce que tu reçois</h2>
+            </div>
+            <p class="muted mt-8 mb-24" style="font-size:0.9rem;">Tout est inclus dans ton paiement unique.</p>
+            <div class="includes-list" id="formation-livrables">
+              <!-- Généré par JS -->
+            </div>
+          </div>
+
+          <!-- C'est pour toi si -->
+          <div class="mb-48 reveal">
+            <div class="gold-line">
+              <h2 class="display-md" style="font-size:1.75rem;">C'est pour toi si…</h2>
+            </div>
+            <div class="includes-list mt-24" id="formation-pour-qui">
+              <!-- Généré par JS -->
+            </div>
+          </div>
+
+          <!-- Plan de la formation -->
+          <div class="mb-48 reveal">
+            <div class="gold-line">
+              <h2 class="display-md" style="font-size:1.75rem;">Le plan de la formation</h2>
+            </div>
+            <div class="mt-24" id="formation-plan">
+              <!-- Sera rempli par JS (même données que contenu mais affichage plan) -->
+            </div>
+          </div>
+
+          <!-- FAQ -->
+          <div class="reveal">
+            <div class="gold-line">
+              <h2 class="display-md" style="font-size:1.75rem;">Questions fréquentes</h2>
+            </div>
+            <div class="accordion mt-24" id="formation-faq">
+              <!-- Généré par JS -->
+            </div>
+          </div>
+
+        </div>
+
+        <!-- COLONNE DROITE — SIDEBAR -->
+        <aside class="formation-sidebar">
+          <div class="formation-sidebar__card reveal">
+            <div class="formation-sidebar__price-block">
+              <div class="formation-sidebar__price" id="formation-prix"></div>
+              <div class="formation-sidebar__once">Paiement unique · Accès à vie</div>
+            </div>
+
+            <a href="#" class="btn btn--primary formation-sidebar__cta stripe-link">
+              Obtenir la formation <span class="arrow">→</span>
+            </a>
+
+            <div class="formation-sidebar__guarantee">
+              <span>🛡️</span>
+              <span>Satisfait ou remboursé — 7 jours</span>
+            </div>
+
+            <div class="includes-grid mt-24">
+              <div class="includes-chip">📄 E-book PDF complet</div>
+              <div class="includes-chip">🎬 Vidéo de formation</div>
+              <div class="includes-chip">🤖 Prompts IA prêts</div>
+              <div class="includes-chip">🛠 Outils & templates</div>
+              <div class="includes-chip">♾️ Mises à jour incluses</div>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- STICKY CTA MOBILE -->
+  <div class="sticky-cta">
+    <span style="font-family:var(--font-serif);font-size:1.25rem;font-weight:600;color:var(--gold);" id="sticky-price"></span>
+    <a href="#" class="btn btn--primary stripe-link">
+      Obtenir la formation <span class="arrow">→</span>
+    </a>
+  </div>
+
+  <!-- CTA BAS DE PAGE -->
+  <section class="section--navy80" style="padding:80px 24px;">
+    <div class="container--narrow text-center">
+      <div class="reveal">
+        <h2 class="display-md mb-16">Prêt à passer à l'action ?</h2>
+        <p class="muted mb-32">Paiement unique · Accès à vie · Satisfait ou remboursé</p>
+        <a href="#" class="btn btn--primary btn--lg stripe-link">
+          Obtenir la formation <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__top">
+        <div>
+          <div class="footer__brand-name">Jeune<span>Unique</span></div>
+          <p class="footer__tagline">Le média business pour les 20–30 ans ambitieux.</p>
+          <div class="footer__socials">
+            <a href="#" class="social-icon">▶</a>
+            <a href="#" class="social-icon">◈</a>
+            <a href="#" class="social-icon">♪</a>
+            <a href="#" class="social-icon">◎</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__col-title">Formations</div>
+          <div class="footer__links">
+            <a href="formations.html" class="footer__link">Catalogue</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__col-title">Contenu</div>
+          <div class="footer__links">
+            <a href="contenu-gratuit.html" class="footer__link">YouTube & Podcasts</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__col-title">Info</div>
+          <div class="footer__links">
+            <a href="a-propos.html" class="footer__link">À propos</a>
+            <a href="mailto:contact@jeuneunique.fr" class="footer__link">Contact</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2025 JeuneUnique. Tous droits réservés.</span>
+        <span>Paiement sécurisé par Stripe</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/formations.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Affichage plan (même données que contenu mais numérotées)
+    function renderPlan(formation) {
+      const el = document.getElementById('formation-plan');
+      if (!el) return;
+      el.innerHTML = formation.contenu.map((c, i) => `
+        <div class="plan-item reveal reveal--delay-${(i % 4) + 1}">
+          <div class="plan-item__num">${String(i + 1).padStart(2, '0')}</div>
+          <div class="plan-item__text">${c}</div>
+        </div>
+      `).join('');
+    }
+
+    initFormationPage();
+
+    // Injecter la vidéo preview
+    function renderPreview(formation) {
+      const wrapper = document.getElementById('preview-video-wrapper');
+      const label   = document.getElementById('preview-label');
+      if (!wrapper) return;
+
+      if (label && formation.previewLabel) {
+        label.innerHTML = `<strong>Visionne d'abord :</strong> ${formation.previewLabel}`;
+      }
+
+      const isPlaceholder = !formation.previewVideo || formation.previewVideo === 'REMPLACER_ID_YOUTUBE';
+
+      if (isPlaceholder) {
+        // Affiche un placeholder propre tant que l'ID YouTube n'est pas configuré
+        wrapper.innerHTML = `
+          <div class="preview-placeholder">
+            <div class="preview-placeholder__icon">▶</div>
+            <p class="preview-placeholder__text">
+              Ta vidéo d'aperçu apparaîtra ici.<br>
+              Remplace <code style="color:var(--gold)">previewVideo</code> dans <code style="color:var(--gold)">formations.js</code> par l'ID de ta vidéo YouTube.
+            </p>
+            <div class="preview-placeholder__code">ex: "dQw4w9WgXcQ"</div>
+          </div>
+        `;
+      } else {
+        // Embed YouTube réel (privacy-enhanced mode)
+        wrapper.innerHTML = `
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/${formation.previewVideo}?rel=0&modestbranding=1&color=white"
+            title="${formation.previewLabel || formation.titre}"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+        `;
+      }
+    }
+
+    // Render plan après initFormationPage (qui a besoin de la formation chargée)
+    const params2 = new URLSearchParams(window.location.search);
+    const f2 = getFormationById(params2.get('id'));
+    if (f2) {
+      renderPlan(f2);
+      renderPreview(f2);
+    }
+  </script>
+</body>
+</html>

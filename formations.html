@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Toutes les formations JeuneUnique — Automobile, Intermédiation, Investissement, Mindset. Paiement unique, accès à vie.">
+  <title>Formations — JeuneUnique</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">Jeune<span>Unique</span></a>
+      <div class="nav__links">
+        <a href="formations.html"      class="nav__link">Formations</a>
+        <a href="contenu-gratuit.html" class="nav__link">Contenu gratuit</a>
+        <a href="a-propos.html"        class="nav__link">À propos</a>
+        <a href="formations.html"      class="btn btn--primary nav__cta">Voir les formations</a>
+      </div>
+      <button class="nav__hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav__mobile">
+    <a href="formations.html"      class="nav__link">Formations</a>
+    <a href="contenu-gratuit.html" class="nav__link">Contenu gratuit</a>
+    <a href="a-propos.html"        class="nav__link">À propos</a>
+    <a href="formations.html"      class="btn btn--primary btn--lg">Voir les formations</a>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <section style="padding:140px 24px 64px;background:#070d18;position:relative;overflow:hidden;">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 50% 60% at 50% 100%,rgba(201,168,76,0.05) 0%,transparent 70%);pointer-events:none;"></div>
+    <div class="container--narrow text-center" style="position:relative;">
+      <span class="label gold reveal">Catalogue</span>
+      <h1 class="display-lg mt-16 reveal">
+        Toutes les formations
+      </h1>
+      <div class="divider divider--center mt-24 mb-24 reveal"></div>
+      <p class="text-lg muted reveal">
+        Paiement unique · Accès à vie · Outils IA inclus
+      </p>
+    </div>
+  </section>
+
+  <!-- CATALOGUE -->
+  <section class="section">
+    <div class="container">
+
+      <!-- Filtres -->
+      <div class="filters reveal" id="filters-bar">
+        <button class="filter-pill active" data-univers="tous">✦ Toutes</button>
+        <button class="filter-pill" data-univers="automobile">🚗 Automobile</button>
+        <button class="filter-pill" data-univers="intermediation">🤝 Intermédiation</button>
+        <button class="filter-pill" data-univers="investissement">📈 Investissement</button>
+        <button class="filter-pill" data-univers="mindset">🧠 Mindset</button>
+      </div>
+
+      <!-- Grille -->
+      <div class="grid-3" id="formations-grid">
+        <!-- Généré par JS -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GARANTIE -->
+  <section class="section--navy80" style="padding:64px 24px;">
+    <div class="container--narrow">
+      <div style="
+        background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(201,168,76,0.03));
+        border:1px solid rgba(201,168,76,0.2);
+        border-radius:var(--radius-xl);
+        padding:48px;
+        text-align:center;
+      " class="reveal">
+        <div style="font-size:2.5rem;margin-bottom:16px;">🛡️</div>
+        <h2 class="display-md mb-16">Satisfait ou remboursé</h2>
+        <p class="muted" style="max-width:480px;margin:0 auto;line-height:1.7;">
+          Si tu appliques la formation et que ça ne te convient pas dans les 7 jours, on te rembourse. Sans condition, sans question. On veut des résultats, pas des clients mécontents.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ RAPIDE -->
+  <section class="section">
+    <div class="container--narrow">
+      <div class="section-header reveal">
+        <span class="label">FAQ</span>
+        <h2 class="display-md mt-16">Questions fréquentes</h2>
+        <div class="divider mt-24"></div>
+      </div>
+      <div class="accordion reveal">
+        <div class="accordion-item">
+          <button class="accordion-header">
+            Comment reçois-je la formation après achat ?
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              Immédiatement après le paiement via Stripe, tu reçois un email avec les liens de téléchargement de l'e-book PDF, l'accès à la vidéo et les outils. L'accès est à vie.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header">
+            Est-ce que les formations sont mises à jour ?
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              Oui. Toutes les mises à jour sont incluses dans ton achat. Si une loi change ou qu'une stratégie évolue, le contenu est mis à jour et tu y as accès automatiquement.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header">
+            Faut-il un profil particulier pour suivre les formations ?
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              Non. Les formations sont conçues pour partir de zéro. Chaque page de formation précise clairement "C'est pour toi si..." — lis ça avant d'acheter pour être sûr que c'est le bon moment.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header">
+            Le paiement est-il sécurisé ?
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              Oui. Tous les paiements sont traités par Stripe, la référence mondiale du paiement en ligne. Aucune donnée bancaire ne transite par le site.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__top">
+        <div>
+          <div class="footer__brand-name">Jeune<span>Unique</span></div>
+          <p class="footer__tagline">Le média business pour les 20–30 ans ambitieux.</p>
+          <div class="footer__socials">
+            <a href="#" class="social-icon">▶</a>
+            <a href="#" class="social-icon">◈</a>
+            <a href="#" class="social-icon">♪</a>
+            <a href="#" class="social-icon">◎</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__col-title">Formations</div>
+          <div class="footer__links">
+            <a href="formations.html?univers=automobile"     class="footer__link">Automobile</a>
+            <a href="formations.html?univers=intermediation" class="footer__link">Intermédiation</a>
+            <a href="formations.html?univers=investissement" class="footer__link">Investissement</a>
+            <a href="formations.html?univers=mindset"        class="footer__link">Mindset</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__col-title">Contenu</div>
+          <div class="footer__links">
+            <a href="contenu-gratuit.html" class="footer__link">YouTube</a>
+            <a href="contenu-gratuit.html#podcasts" class="footer__link">Podcasts</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__col-title">Info</div>
+          <div class="footer__links">
+            <a href="a-propos.html" class="footer__link">À propos</a>
+            <a href="mailto:contact@jeuneunique.fr" class="footer__link">Contact</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2025 JeuneUnique. Tous droits réservés.</span>
+        <span>Paiement sécurisé par Stripe</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/formations.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Lecture du filtre URL (?univers=xxx)
+    const params = new URLSearchParams(window.location.search);
+    const urlUnivers = params.get('univers');
+
+    // Activer le bon pill si filtre URL
+    if (urlUnivers) {
+      document.querySelectorAll('.filter-pill').forEach(p => {
+        p.classList.toggle('active', p.dataset.univers === urlUnivers);
+      });
+    }
+
+    // Render initial
+    document.getElementById('formations-grid').innerHTML =
+      getFormationsByUnivers(urlUnivers || 'tous').map(renderFormationCard).join('');
+
+    // Init filtres dynamiques
+    initFilters();
+  </script>
+</body>
+</html>
