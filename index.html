@@ -3,378 +3,920 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="JeuneUnique — Brisez les barrières et créez votre propre chemin. Conseil, entrepreneuriat, impact.">
-  <title>JeuneUnique — Brisez les barrières, créez votre chemin</title>
-  <link rel="stylesheet" href="css/main.css">
+  <title>JeuneUnique — Formations business pour les 20–30 ans ambitieux</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:  #060608;
+      --dark:   #0d0d12;
+      --gold:   #C9A84C;
+      --gold-r: 201,168,76;
+      --white:  #f5f0e8;
+      --muted:  rgba(245,240,232,0.4);
+      --border: rgba(245,240,232,0.07);
+      --sans:   'Syne', system-ui, sans-serif;
+      --body:   'Inter', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--black); color: var(--white); font-family: var(--body); overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ── CURSOR GLOW ── */
+    .cursor-glow {
+      position: fixed; width: 400px; height: 400px;
+      border-radius: 50%; pointer-events: none; z-index: 0;
+      background: radial-gradient(circle, rgba(var(--gold-r),.05) 0%, transparent 65%);
+      transform: translate(-50%,-50%);
+      transition: opacity .3s;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 clamp(24px,5vw,80px); height: 64px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(6,6,8,0.8); backdrop-filter: blur(20px);
+    }
+    .n-logo {
+      font-family: var(--sans); font-size: 1.1rem; font-weight: 800;
+      letter-spacing: -.02em;
+    }
+    .n-logo span { color: var(--gold); }
+    .n-links { display: flex; align-items: center; gap: 40px; }
+    .n-link {
+      font-family: var(--body); font-size: .82rem; font-weight: 400;
+      color: var(--muted); transition: color .2s;
+    }
+    .n-link:hover { color: var(--white); }
+    .n-cta {
+      font-family: var(--sans); font-size: .82rem; font-weight: 700;
+      background: var(--gold); color: var(--black);
+      padding: 9px 22px; border-radius: 6px;
+      transition: opacity .2s, transform .15s;
+    }
+    .n-cta:hover { opacity: .85; transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 0 clamp(24px,5vw,80px) 80px;
+      overflow: hidden;
+    }
+    /* Big background number */
+    .hero-bg-num {
+      position: absolute; top: 50%; right: -2vw;
+      transform: translateY(-50%);
+      font-family: var(--sans); font-weight: 800;
+      font-size: clamp(200px, 30vw, 480px);
+      line-height: 1; letter-spacing: -.05em;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(var(--gold-r),.07);
+      pointer-events: none; user-select: none;
+    }
+    /* Animated gradient mesh */
+    .hero-mesh {
+      position: absolute; inset: 0; pointer-events: none;
+      overflow: hidden;
+    }
+    .hero-mesh::before {
+      content: '';
+      position: absolute; width: 60vw; height: 60vh;
+      top: -10%; left: -5%;
+      background: radial-gradient(ellipse, rgba(var(--gold-r),.08) 0%, transparent 65%);
+      filter: blur(80px);
+      animation: drift 20s ease-in-out infinite;
+    }
+    .hero-mesh::after {
+      content: '';
+      position: absolute; width: 40vw; height: 50vh;
+      bottom: 0; right: 5%;
+      background: radial-gradient(ellipse, rgba(99,74,198,.07) 0%, transparent 65%);
+      filter: blur(100px);
+      animation: drift 28s ease-in-out infinite reverse;
+    }
+    @keyframes drift {
+      0%,100% { transform: translate(0,0); }
+      33% { transform: translate(40px,30px); }
+      66% { transform: translate(-30px,-20px); }
+    }
+
+    .hero-eyebrow {
+      font-family: var(--body); font-size: .72rem; font-weight: 500;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 28px;
+      display: flex; align-items: center; gap: 12px;
+      animation: slideUp .8s ease-out both;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block; width: 32px; height: 1px; background: var(--gold);
+    }
+
+    .hero-title {
+      font-family: var(--sans); font-weight: 800;
+      font-size: clamp(3.5rem, 9vw, 10rem);
+      line-height: .93; letter-spacing: -.04em;
+      max-width: 16ch;
+      animation: slideUp .8s .1s ease-out both;
+    }
+    .hero-title .line-gold { color: var(--gold); }
+    .hero-title .line-outline {
+      color: transparent;
+      -webkit-text-stroke: 2px var(--white);
+    }
+
+    .hero-bottom {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      margin-top: 60px; flex-wrap: wrap; gap: 32px;
+      animation: slideUp .8s .25s ease-out both;
+    }
+    .hero-desc {
+      font-size: 1rem; color: var(--muted); line-height: 1.75;
+      max-width: 380px;
+    }
+    .hero-actions { display: flex; align-items: center; gap: 14px; }
+    .btn-gold {
+      font-family: var(--sans); font-size: .9rem; font-weight: 700;
+      background: var(--gold); color: var(--black);
+      padding: 14px 32px; border-radius: 6px; border: none; cursor: pointer;
+      transition: opacity .2s, transform .15s;
+      box-shadow: 0 0 40px rgba(var(--gold-r),.2);
+    }
+    .btn-gold:hover { opacity: .85; transform: translateY(-2px); }
+    .btn-line {
+      font-family: var(--sans); font-size: .9rem; font-weight: 600;
+      color: var(--white); background: transparent;
+      padding: 14px 32px; border-radius: 6px;
+      border: 1px solid rgba(255,255,255,.12);
+      transition: border-color .2s, background .2s;
+    }
+    .btn-line:hover { border-color: rgba(255,255,255,.3); background: rgba(255,255,255,.04); }
+
+    /* Scroll indicator */
+    .hero-scroll {
+      position: absolute; bottom: 32px; right: clamp(24px,5vw,80px);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      animation: slideUp .8s .4s ease-out both;
+    }
+    .hero-scroll span {
+      font-family: var(--body); font-size: .65rem; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--muted);
+      writing-mode: vertical-rl;
+    }
+    .hero-scroll-line {
+      width: 1px; height: 60px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse { 0%,100%{opacity:.3;transform:scaleY(.8)} 50%{opacity:1;transform:scaleY(1)} }
+
+    /* ── MARQUEE ── */
+    .marquee-section {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden; padding: 18px 0;
+    }
+    .marquee-track {
+      display: flex; width: max-content;
+      animation: scroll 32s linear infinite;
+    }
+    .mi {
+      padding: 0 28px;
+      font-family: var(--sans); font-size: .72rem; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: rgba(255,255,255,.25); white-space: nowrap;
+    }
+    .mi-gold { color: var(--gold); opacity: .5; }
+    @keyframes scroll { to { transform: translateX(-50%); } }
+
+    /* ── ABOUT ── */
+    .about-section {
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr 1fr;
+      min-height: 90vh;
+    }
+    .about-photo-col {
+      position: relative; overflow: hidden;
+    }
+    .about-photo {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: top center;
+      display: block; filter: grayscale(20%) contrast(1.08);
+    }
+    /* Overlay gradient */
+    .about-photo-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, transparent 60%, var(--black) 100%),
+                  linear-gradient(to top, var(--black) 0%, transparent 30%);
+    }
+    /* Section number */
+    .about-section-num {
+      position: absolute; top: 40px; left: 32px;
+      font-family: var(--sans); font-size: .7rem; font-weight: 700;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--gold);
+    }
+    /* Gold line bottom photo */
+    .about-photo-col::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(to right, var(--gold), transparent);
+    }
+    /* Float badge on photo */
+    .about-badge {
+      position: absolute; bottom: 48px; left: 32px;
+      background: rgba(6,6,8,.85); backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-left: 2px solid var(--gold);
+      padding: 14px 20px; border-radius: 8px;
+    }
+    .about-badge__v {
+      font-family: var(--sans); font-size: 1.5rem; font-weight: 800;
+      color: var(--gold); line-height: 1;
+    }
+    .about-badge__l { font-size: .75rem; color: var(--muted); margin-top: 3px; }
+
+    .about-text-col {
+      padding: clamp(60px,8vw,120px) clamp(32px,5vw,80px);
+      display: flex; flex-direction: column; justify-content: center; gap: 32px;
+      position: relative;
+    }
+    /* Big "01" in background */
+    .about-text-col::before {
+      content: '01';
+      position: absolute; top: 0; right: -20px;
+      font-family: var(--sans); font-weight: 800;
+      font-size: 220px; line-height: 1; letter-spacing: -.05em;
+      color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,.04);
+      pointer-events: none; user-select: none;
+    }
+    .about-label {
+      font-family: var(--body); font-size: .7rem; font-weight: 500;
+      letter-spacing: .2em; text-transform: uppercase; color: var(--gold);
+    }
+    .about-title {
+      font-family: var(--sans); font-size: clamp(2rem,3.5vw,3rem);
+      font-weight: 800; line-height: 1.05; letter-spacing: -.03em;
+    }
+    .about-quote {
+      font-family: var(--body); font-size: 1.05rem; line-height: 1.8;
+      color: var(--white); font-style: italic;
+      padding-left: 18px;
+      border-left: 2px solid var(--gold);
+    }
+    .about-body { font-size: .9rem; color: var(--muted); line-height: 1.8; }
+    .about-checks { display: flex; flex-direction: column; gap: 12px; }
+    .about-check {
+      display: flex; align-items: center; gap: 12px;
+      font-size: .875rem; color: rgba(255,255,255,.65);
+    }
+    .about-check::before {
+      content: '';
+      width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0;
+      background: rgba(var(--gold-r),.1);
+      border: 1px solid rgba(var(--gold-r),.3);
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 12 12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 6l3 3 5-5' stroke='%23C9A84C' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-size: 10px; background-repeat: no-repeat; background-position: center;
+    }
+    .about-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--sans); font-size: .85rem; font-weight: 700;
+      color: var(--gold); transition: gap .2s;
+    }
+    .about-link:hover { gap: 14px; }
+
+    /* ── STATS ── */
+    .stats-section {
+      position: relative; z-index: 1;
+      border-top: 1px solid var(--border);
+    }
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+    }
+    .stat-cell {
+      padding: 64px 48px; border-right: 1px solid var(--border);
+      position: relative; overflow: hidden;
+      transition: background .25s;
+    }
+    .stat-cell:last-child { border-right: none; }
+    .stat-cell::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(to right, var(--gold), transparent);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .4s ease;
+    }
+    .stat-cell:hover { background: rgba(255,255,255,.02); }
+    .stat-cell:hover::before { transform: scaleX(1); }
+    .stat-num {
+      font-family: var(--sans); font-weight: 800;
+      font-size: clamp(3.5rem,6vw,6rem); line-height: 1;
+      letter-spacing: -.04em; color: var(--white);
+      margin-bottom: 8px;
+    }
+    .stat-num em { color: var(--gold); font-style: normal; }
+    .stat-label {
+      font-size: .78rem; font-weight: 500; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--muted);
+    }
+
+    /* ── FORMATIONS ── */
+    .form-section {
+      position: relative; z-index: 1;
+      padding: clamp(80px,10vw,140px) clamp(24px,5vw,80px);
+      border-top: 1px solid var(--border);
+    }
+    .form-header {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 40px; align-items: end; margin-bottom: 72px;
+    }
+    .section-num-label {
+      font-family: var(--body); font-size: .7rem; font-weight: 500;
+      letter-spacing: .2em; text-transform: uppercase; color: var(--gold);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-num-label::before {
+      content: ''; display: block; width: 24px; height: 1px; background: var(--gold);
+    }
+    .form-title {
+      font-family: var(--sans); font-size: clamp(2.5rem,5vw,5rem);
+      font-weight: 800; line-height: .95; letter-spacing: -.04em;
+    }
+    .form-desc { font-size: .95rem; color: var(--muted); line-height: 1.75; }
+    .form-see-all {
+      font-family: var(--sans); font-size: .85rem; font-weight: 700;
+      color: var(--gold); display: inline-flex; align-items: center; gap: 8px;
+      transition: gap .2s;
+    }
+    .form-see-all:hover { gap: 14px; }
+
+    /* Horizontal formation cards */
+    .form-list { display: flex; flex-direction: column; gap: 2px; }
+    .form-card {
+      display: grid; grid-template-columns: 280px 1fr auto;
+      gap: 0; align-items: stretch;
+      background: var(--dark);
+      border: 1px solid var(--border);
+      border-radius: 14px; overflow: hidden;
+      transition: border-color .3s, transform .3s;
+      cursor: pointer;
+    }
+    .form-card:hover { border-color: rgba(var(--gold-r),.3); transform: translateX(6px); }
+    .form-card--featured { border-color: rgba(var(--gold-r),.2); }
+    .form-card--featured:hover { border-color: rgba(var(--gold-r),.5); }
+    .form-card__img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .5s; display: block;
+    }
+    .form-card:hover .form-card__img { transform: scale(1.05); }
+    .form-card__body {
+      padding: 32px 40px; display: flex; flex-direction: column;
+      justify-content: space-between; gap: 16px;
+    }
+    .form-card__top { display: flex; flex-direction: column; gap: 10px; }
+    .form-card__tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: var(--body); font-size: .65rem; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase;
+      padding: 4px 10px; border-radius: 100px; width: fit-content;
+    }
+    .tag-auto   { background: rgba(239,68,68,.1);  color: #f87171; border: 1px solid rgba(239,68,68,.2); }
+    .tag-inter  { background: rgba(59,130,246,.1); color: #60a5fa; border: 1px solid rgba(59,130,246,.2); }
+    .tag-invest { background: rgba(52,211,153,.1); color: #34d399; border: 1px solid rgba(52,211,153,.2); }
+    .form-card__name {
+      font-family: var(--sans); font-size: 1.4rem; font-weight: 800;
+      letter-spacing: -.02em; line-height: 1.15;
+    }
+    .form-card__desc { font-size: .88rem; color: var(--muted); line-height: 1.65; }
+    .form-card__pills {
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .form-pill {
+      font-size: .72rem; padding: 4px 10px; border-radius: 100px;
+      background: rgba(255,255,255,.05); border: 1px solid var(--border);
+      color: rgba(255,255,255,.5);
+    }
+    .form-card__price-col {
+      padding: 32px; display: flex; flex-direction: column;
+      align-items: flex-end; justify-content: space-between;
+      border-left: 1px solid var(--border); min-width: 160px;
+    }
+    .form-card__price {
+      font-family: var(--sans); font-size: 3rem; font-weight: 800;
+      letter-spacing: -.04em; color: var(--gold); line-height: 1;
+      text-align: right;
+    }
+    .form-card__once { font-size: .72rem; color: var(--muted); margin-top: 4px; text-align: right; }
+    .form-card__arrow {
+      width: 42px; height: 42px; border-radius: 50%;
+      border: 1px solid rgba(var(--gold-r),.3);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold); font-size: 1rem;
+      transition: background .2s, transform .2s;
+    }
+    .form-card:hover .form-card__arrow { background: var(--gold); color: var(--black); transform: rotate(45deg); }
+    .form-card__featured-badge {
+      background: var(--gold); color: var(--black);
+      font-family: var(--sans); font-size: .6rem; font-weight: 800;
+      letter-spacing: .1em; text-transform: uppercase;
+      padding: 3px 8px; border-radius: 4px;
+    }
+
+    /* ── FEATURES ── */
+    .feat-section {
+      position: relative; z-index: 1;
+      padding: clamp(80px,10vw,140px) clamp(24px,5vw,80px);
+      border-top: 1px solid var(--border);
+    }
+    .feat-header { margin-bottom: 64px; }
+    .feat-title {
+      font-family: var(--sans); font-size: clamp(2rem,4vw,4rem);
+      font-weight: 800; letter-spacing: -.04em; line-height: 1;
+      max-width: 14ch; margin-top: 16px;
+    }
+    .feat-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--border); border-radius: 14px; overflow: hidden;
+      gap: 0;
+    }
+    .feat-item {
+      padding: 40px 32px; border-right: 1px solid var(--border);
+      position: relative; overflow: hidden; transition: background .3s;
+    }
+    .feat-item:last-child { border-right: none; }
+    .feat-item:hover { background: rgba(255,255,255,.025); }
+    .feat-num {
+      font-family: var(--sans); font-size: .7rem; font-weight: 700;
+      color: var(--gold); margin-bottom: 20px;
+    }
+    .feat-icon { font-size: 1.6rem; display: block; margin-bottom: 16px; }
+    .feat-name {
+      font-family: var(--sans); font-size: 1rem; font-weight: 700;
+      margin-bottom: 10px; letter-spacing: -.01em;
+    }
+    .feat-desc { font-size: .83rem; color: var(--muted); line-height: 1.65; }
+
+    /* ── FAQ ── */
+    .faq-section {
+      position: relative; z-index: 1;
+      padding: clamp(80px,10vw,140px) clamp(24px,5vw,80px);
+      border-top: 1px solid var(--border);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+    }
+    .faq-left { position: sticky; top: 100px; }
+    .faq-big-num {
+      font-family: var(--sans); font-weight: 800;
+      font-size: clamp(6rem, 12vw, 14rem); line-height: 1; letter-spacing: -.05em;
+      color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,.08);
+      margin-bottom: -20px;
+    }
+    .faq-title {
+      font-family: var(--sans); font-size: clamp(2rem,3.5vw,3.2rem);
+      font-weight: 800; letter-spacing: -.03em; line-height: 1.05;
+      margin-top: 16px;
+    }
+    .faq-sub { font-size: .9rem; color: var(--muted); line-height: 1.7; margin-top: 16px; }
+    .faq-list { display: flex; flex-direction: column; gap: 4px; }
+    .faq-item {
+      border: 1px solid var(--border); border-radius: 10px;
+      overflow: hidden; background: var(--dark); cursor: pointer;
+      transition: border-color .25s;
+    }
+    .faq-item.open { border-color: rgba(var(--gold-r),.3); }
+    .faq-q {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 22px;
+      font-family: var(--sans); font-size: .9rem; font-weight: 600;
+      user-select: none; gap: 16px;
+    }
+    .faq-icon {
+      width: 22px; height: 22px; border-radius: 50%;
+      border: 1px solid var(--border); flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .8rem; color: var(--muted);
+      transition: transform .3s, border-color .3s, color .3s;
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); border-color: var(--gold); color: var(--gold); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+    .faq-a-in { padding: 0 22px 18px; font-size: .88rem; color: var(--muted); line-height: 1.75; }
+
+    /* ── CTA ── */
+    .cta-section {
+      position: relative; z-index: 1; overflow: hidden;
+      border-top: 1px solid var(--border);
+      padding: clamp(100px,14vw,180px) clamp(24px,5vw,80px);
+      text-align: center;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute; bottom: -80px; left: 50%; transform: translateX(-50%);
+      width: 80%; height: 500px;
+      background: radial-gradient(ellipse, rgba(var(--gold-r),.1) 0%, transparent 60%);
+      filter: blur(60px);
+    }
+    .cta-eyebrow {
+      font-family: var(--body); font-size: .72rem; font-weight: 500;
+      letter-spacing: .2em; text-transform: uppercase; color: var(--gold);
+      margin-bottom: 24px; display: block;
+    }
+    .cta-title {
+      font-family: var(--sans); font-weight: 800;
+      font-size: clamp(3rem,8vw,8rem); line-height: .92;
+      letter-spacing: -.05em; position: relative; z-index: 1;
+    }
+    .cta-title .outline {
+      color: transparent; -webkit-text-stroke: 2px rgba(255,255,255,.3);
+    }
+    .cta-actions { margin-top: 56px; display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; position: relative; z-index: 1; }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative; z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 64px clamp(24px,5vw,80px) 32px;
+    }
+    .footer-top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px; padding-bottom: 48px; border-bottom: 1px solid var(--border);
+    }
+    .footer-brand {
+      font-family: var(--sans); font-size: 1.3rem; font-weight: 800;
+      letter-spacing: -.03em; margin-bottom: 10px;
+    }
+    .footer-brand span { color: var(--gold); }
+    .footer-tag { font-size: .85rem; color: var(--muted); line-height: 1.6; }
+    .footer-col h4 {
+      font-family: var(--sans); font-size: .65rem; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: rgba(255,255,255,.25); margin-bottom: 18px;
+    }
+    .footer-col a {
+      display: block; font-size: .875rem; color: rgba(255,255,255,.45);
+      margin-bottom: 12px; transition: color .2s;
+    }
+    .footer-col a:hover { color: var(--white); }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 28px; flex-wrap: wrap; gap: 10px;
+      font-size: .78rem; color: rgba(255,255,255,.2);
+    }
+
+    /* ── REVEAL ── */
+    .r { opacity: 0; transform: translateY(32px); transition: opacity .7s ease, transform .7s ease; }
+    .r.left { transform: translateX(-32px); }
+    .r.right { transform: translateX(32px); }
+    .r.vis { opacity: 1 !important; transform: translate(0) !important; }
+    .r.d1 { transition-delay: .1s; } .r.d2 { transition-delay: .2s; }
+    .r.d3 { transition-delay: .3s; } .r.d4 { transition-delay: .4s; }
+
+    @keyframes slideUp {
+      from { opacity:0; transform:translateY(28px); filter:blur(4px); }
+      to   { opacity:1; transform:translateY(0);    filter:blur(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:1024px) {
+      .about-section { grid-template-columns: 1fr; }
+      .about-photo-col { height: 60vw; }
+      .faq-section { grid-template-columns: 1fr; }
+      .faq-left { position: static; }
+      .form-card { grid-template-columns: 200px 1fr auto; }
+      .feat-grid { grid-template-columns: repeat(2,1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media(max-width:700px) {
+      .form-card { grid-template-columns: 1fr; }
+      .form-card__price-col { border-left: none; border-top: 1px solid var(--border); flex-direction: row; align-items: center; padding: 20px 24px; }
+      .stats-grid { grid-template-columns: repeat(2,1fr); }
+      .feat-grid { grid-template-columns: 1fr; }
+      .form-header { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .hero-title { font-size: 3rem; }
+      .n-links .n-link { display: none; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- NAVIGATION -->
-  <nav class="nav">
-    <div class="nav__inner">
-      <a href="index.html" class="nav__logo-svg">
-        <!-- Logo JJ SVG -->
-        <svg class="nav__logo-mark" viewBox="0 0 40 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Étoile dorée -->
-          <path d="M20 1 L21.2 9.5 L28.5 5.5 L23.5 13 L32 13.5 L24 17.5 L29 25 L20 19.5 L11 25 L16 17.5 L8 13.5 L16.5 13 L11.5 5.5 L18.8 9.5 Z" fill="#C9A84C"/>
-          <!-- Grand J gauche -->
-          <text x="4" y="40" font-family="Georgia, serif" font-size="26" font-weight="700" fill="#F2EDE3" letter-spacing="-3">JJ</text>
-        </svg>
-        <div class="nav__logo-text-block">
-          <span class="nav__logo-name">Jeune<span>Unique</span></span>
-          <span class="nav__logo-tag">Conseil · Entrepreneuriat · Impact</span>
-        </div>
-      </a>
-      <div class="nav__links">
-        <a href="formations.html"     class="nav__link">Formations</a>
-        <a href="contenu-gratuit.html" class="nav__link">Contenu gratuit</a>
-        <a href="a-propos.html"       class="nav__link">À propos</a>
-        <a href="formations.html"     class="btn btn--primary nav__cta">Voir les formations</a>
-      </div>
-      <button class="nav__hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
+  <div class="cursor-glow" id="cursor"></div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="n-logo">Jeune<span>Unique</span></a>
+    <div class="n-links">
+      <a href="formations.html"      class="n-link">Formations</a>
+      <a href="contenu-gratuit.html" class="n-link">Contenu gratuit</a>
+      <a href="a-propos.html"        class="n-link">À propos</a>
+      <a href="formations.html"      class="n-cta">Voir les formations</a>
     </div>
   </nav>
 
-  <!-- Mobile menu -->
-  <div class="nav__mobile">
-    <a href="formations.html"      class="nav__link">Formations</a>
-    <a href="contenu-gratuit.html" class="nav__link">Contenu gratuit</a>
-    <a href="a-propos.html"        class="nav__link">À propos</a>
-    <a href="formations.html"      class="btn btn--primary btn--lg">Voir les formations</a>
-  </div>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-mesh"></div>
+    <div class="hero-bg-num">JU</div>
 
-  <!-- HERO — Gradient élégant -->
-  <section class="hero-etheral">
+    <div class="hero-eyebrow">Formations business · 20–30 ans</div>
 
-    <!-- Faisceaux lumineux animés -->
-    <canvas id="hero-canvas" class="hero-canvas"></canvas>
-    <div class="hero-overlay"></div>
+    <h1 class="hero-title">
+      Entre&shy;prendre.<br>
+      <span class="line-gold">Investir.</span><br>
+      <span class="line-outline">Maintenant.</span>
+    </h1>
 
-    <!-- Contenu centré -->
-    <div class="hero-etheral__content">
-      <img
-        src="assets/logo/Logo 2k26 Noir.png"
-        alt="JeuneUnique"
-        class="hero-etheral__logo"
-      >
-      <h1 class="hero-etheral__title">
-        Brisez les barrières<br>
-        <span class="hero-etheral__title-gold">Et créez votre propre chemin</span>
-      </h1>
-      <div class="hero-etheral__actions">
-        <a href="formations.html" class="btn btn--primary btn--lg">
-          Voir les formations <span class="arrow">→</span>
-        </a>
-        <a href="contenu-gratuit.html" class="btn btn--outline btn--lg">
-          Contenu gratuit
-        </a>
+    <div class="hero-bottom">
+      <p class="hero-desc">
+        Des formations concrètes pour les 20–30 ans ambitieux.
+        Automobile, intermédiation, investissement —
+        zéro théorie inutile, plan d'action dès la première semaine.
+      </p>
+      <div class="hero-actions">
+        <a href="formations.html" class="btn-gold">Voir les formations →</a>
+        <a href="contenu-gratuit.html" class="btn-line">Contenu gratuit</a>
       </div>
     </div>
 
-    <!-- Indicateur scroll -->
-    <div class="hero-etheral__scroll">
-      <div class="hero-scroll-bar"></div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="hero-scroll-line"></div>
     </div>
-
   </section>
 
   <!-- MARQUEE -->
-  <div class="marquee-wrapper">
-    <div class="marquee">
-      <span class="marquee-item">Automobile</span>
-      <span class="marquee-item">Intermédiation</span>
-      <span class="marquee-item">Investissement</span>
-      <span class="marquee-item">Mindset & Décision</span>
-      <span class="marquee-item">Podcasts</span>
-      <span class="marquee-item">Zéro bullshit</span>
-      <span class="marquee-item">Paiement unique</span>
-      <span class="marquee-item">Accès à vie</span>
-      <!-- duplicate for loop -->
-      <span class="marquee-item">Automobile</span>
-      <span class="marquee-item">Intermédiation</span>
-      <span class="marquee-item">Investissement</span>
-      <span class="marquee-item">Mindset & Décision</span>
-      <span class="marquee-item">Podcasts</span>
-      <span class="marquee-item">Zéro bullshit</span>
-      <span class="marquee-item">Paiement unique</span>
-      <span class="marquee-item">Accès à vie</span>
+  <div class="marquee-section">
+    <div class="marquee-track">
+      <span class="mi">Automobile</span><span class="mi mi-gold">✦</span>
+      <span class="mi">Intermédiation</span><span class="mi mi-gold">✦</span>
+      <span class="mi">Investissement</span><span class="mi mi-gold">✦</span>
+      <span class="mi">Mindset</span><span class="mi mi-gold">✦</span>
+      <span class="mi">Podcasts</span><span class="mi mi-gold">✦</span>
+      <span class="mi">Paiement unique</span><span class="mi mi-gold">✦</span>
+      <span class="mi">Accès à vie</span><span class="mi mi-gold">✦</span>
+      <span class="mi">Zéro bullshit</span><span class="mi mi-gold">✦</span>
+      <span class="mi">Automobile</span><span class="mi mi-gold">✦</span>
+      <span class="mi">Intermédiation</span><span class="mi mi-gold">✦</span>
+      <span class="mi">Investissement</span><span class="mi mi-gold">✦</span>
+      <span class="mi">Mindset</span><span class="mi mi-gold">✦</span>
+      <span class="mi">Podcasts</span><span class="mi mi-gold">✦</span>
+      <span class="mi">Paiement unique</span><span class="mi mi-gold">✦</span>
+      <span class="mi">Accès à vie</span><span class="mi mi-gold">✦</span>
+      <span class="mi">Zéro bullshit</span><span class="mi mi-gold">✦</span>
     </div>
   </div>
 
-  <!-- LES 5 UNIVERS -->
-  <section class="section">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="label">Nos univers</span>
-        <h2 class="display-md mt-16">
-          5 domaines.<br>Des résultats concrets.
-        </h2>
-        <div class="divider mt-24"></div>
-        <p class="text-lg muted mt-16" style="max-width:480px;">
-          Chaque univers est un levier pour construire ta liberté financière. Pas de survol — de la profondeur actionnable.
-        </p>
+  <!-- ABOUT -->
+  <section class="about-section">
+    <div class="about-photo-col">
+      <div class="about-section-num">01 — Le créateur</div>
+      <img src="assets/photo/photo franck PRO.png" alt="JeuneUnique" class="about-photo"
+           onerror="this.style.cssText='width:100%;height:100%;background:linear-gradient(135deg,#1a1a2a,#0d0d18);display:block'">
+      <div class="about-photo-overlay"></div>
+      <div class="about-badge">
+        <div class="about-badge__v">100%</div>
+        <div class="about-badge__l">Terrain · Pas de théorie</div>
       </div>
+    </div>
 
-      <div class="grid-3" style="gap:20px;">
-        <a href="formations.html?univers=automobile" class="universe-card reveal reveal--delay-1">
-          <div class="universe-card__icon">🚗</div>
-          <h3 class="universe-card__title">Automobile</h3>
-          <p class="universe-card__desc">Créer une agence mandataire, générer des commissions, construire un réseau fournisseurs sans stock.</p>
-          <div class="universe-card__count">1 formation disponible →</div>
-        </a>
-        <a href="formations.html?univers=intermediation" class="universe-card reveal reveal--delay-2">
-          <div class="universe-card__icon">🤝</div>
-          <h3 class="universe-card__title">Intermédiation</h3>
-          <p class="universe-card__desc">Être payé pour mettre les bonnes personnes en relation. Zéro investissement, zéro compétence technique.</p>
-          <div class="universe-card__count">1 formation disponible →</div>
-        </a>
-        <a href="formations.html?univers=investissement" class="universe-card reveal reveal--delay-3">
-          <div class="universe-card__icon">📈</div>
-          <h3 class="universe-card__title">Investissement</h3>
-          <p class="universe-card__desc">Construire son patrimoine depuis zéro, PEA, bourse, immobilier — avec un salaire normal.</p>
-          <div class="universe-card__count">1 formation disponible →</div>
-        </a>
-        <a href="formations.html?univers=mindset" class="universe-card reveal reveal--delay-1">
-          <div class="universe-card__icon">🧠</div>
-          <h3 class="universe-card__title">Décision & Mindset</h3>
-          <p class="universe-card__desc">Les frameworks pour décider mieux et plus vite. Moins d'hésitation, plus de clarté, plus d'action.</p>
-          <div class="universe-card__count">1 formation disponible →</div>
-        </a>
-        <a href="contenu-gratuit.html#podcasts" class="universe-card reveal reveal--delay-2">
-          <div class="universe-card__icon">🎙️</div>
-          <h3 class="universe-card__title">Podcasts</h3>
-          <p class="universe-card__desc">Des conversations authentiques avec des entrepreneurs francophones qui ont construit quelque chose de réel.</p>
-          <div class="universe-card__count">Contenu gratuit →</div>
-        </a>
-        <div class="universe-card reveal reveal--delay-3" style="border-style:dashed;cursor:default;">
-          <div class="universe-card__icon">✦</div>
-          <h3 class="universe-card__title" style="color:var(--gray-400);">Bientôt</h3>
-          <p class="universe-card__desc">De nouveaux univers arrivent. Rejoins la newsletter pour être le premier informé.</p>
-          <div class="universe-card__count" style="color:var(--gray-600);">En cours →</div>
-        </div>
+    <div class="about-text-col">
+      <div class="r">
+        <div class="about-label">Le créateur · JeuneUnique</div>
+      </div>
+      <h2 class="about-title r d1">
+        Concret.<br>Actionnable.<br>
+        <span style="color:var(--gold)">Zéro bullshit.</span>
+      </h2>
+      <blockquote class="about-quote r d2">
+        "J'ai créé JeuneUnique parce que je n'ai pas trouvé ce que je cherchais — des contenus qui vont droit au but, sans te vendre du rêve."
+      </blockquote>
+      <p class="about-body r d3">
+        Chaque formation est le résultat de ce que j'ai testé, échoué et optimisé.
+        Pas de théorie académique, pas de motivation vide.
+        Des plans d'action que tu peux appliquer dès cette semaine.
+      </p>
+      <div class="about-checks r d3">
+        <div class="about-check">Paiement unique — pas d'abonnement</div>
+        <div class="about-check">Accès à vie + toutes les mises à jour</div>
+        <div class="about-check">Outils IA + prompts prêts à l'emploi</div>
+        <div class="about-check">Plan d'action applicable immédiatement</div>
+      </div>
+      <div class="r d4">
+        <a href="a-propos.html" class="about-link">En savoir plus sur le projet →</a>
       </div>
     </div>
   </section>
 
-  <!-- FORMATIONS EN VEDETTE -->
-  <section class="section section--navy80">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="label">Formations</span>
-        <h2 class="display-md mt-16">Les plus populaires</h2>
-        <div class="divider mt-24"></div>
+  <!-- STATS -->
+  <div class="stats-section r">
+    <div class="stats-grid">
+      <div class="stat-cell">
+        <div class="stat-num">5</div>
+        <div class="stat-label">Univers business</div>
       </div>
-
-      <div class="grid-3" id="featured-formations">
-        <!-- Généré par JS -->
+      <div class="stat-cell">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Formations disponibles</div>
       </div>
+      <div class="stat-cell">
+        <div class="stat-num"><em>1×</em></div>
+        <div class="stat-label">Paiement unique</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">0</div>
+        <div class="stat-label">Bullshit</div>
+      </div>
+    </div>
+  </div>
 
-      <div class="text-center mt-48 reveal">
-        <a href="formations.html" class="btn btn--outline btn--lg">
-          Voir toutes les formations <span class="arrow">→</span>
-        </a>
+  <!-- FORMATIONS -->
+  <section class="form-section">
+    <div class="form-header">
+      <div>
+        <div class="section-num-label r">02 — Formations</div>
+        <h2 class="form-title r d1">Choisis<br>ton levier</h2>
+      </div>
+      <div class="r" style="display:flex;flex-direction:column;justify-content:flex-end;gap:12px;">
+        <p class="form-desc">E-book · Vidéo · Outils IA · Templates — paiement unique, accès à vie.</p>
+        <a href="formations.html" class="form-see-all">Voir toutes les formations →</a>
+      </div>
+    </div>
+    <div class="form-list" id="form-list">
+      <!-- rempli par JS -->
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="feat-section">
+    <div class="feat-header">
+      <div class="section-num-label r">03 — Ce qui est inclus</div>
+      <h2 class="feat-title r d1">Tout pour<br>passer à l'action</h2>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-item r d1">
+        <div class="feat-num">01</div>
+        <span class="feat-icon">📄</span>
+        <div class="feat-name">E-book PDF complet</div>
+        <div class="feat-desc">Un guide structuré, téléchargeable, que tu peux relire à tout moment. Du concret, pas de la théorie.</div>
+      </div>
+      <div class="feat-item r d2">
+        <div class="feat-num">02</div>
+        <span class="feat-icon">🎬</span>
+        <div class="feat-name">Vidéo de formation</div>
+        <div class="feat-desc">Entre 20 et 35 minutes par module. Chaque minute compte — pas de remplissage, pas de redite.</div>
+      </div>
+      <div class="feat-item r d3">
+        <div class="feat-num">03</div>
+        <span class="feat-icon">🤖</span>
+        <div class="feat-name">Prompts IA prêts</div>
+        <div class="feat-desc">Des prompts testés pour aller 10× plus vite dans ta mise en œuvre. Copie, adapte, applique.</div>
+      </div>
+      <div class="feat-item r d4">
+        <div class="feat-num">04</div>
+        <span class="feat-icon">🛠</span>
+        <div class="feat-name">Templates & fichiers</div>
+        <div class="feat-desc">Contrats, tableurs, simulateurs — les outils que j'utilise au quotidien, directement accessibles.</div>
       </div>
     </div>
   </section>
 
-  <!-- POURQUOI JEUNEUNIQUE -->
-  <section class="section">
-    <div class="container">
-      <div class="grid-2" style="align-items:center;gap:64px;">
-        <div class="reveal">
-          <span class="label gold">Le positionnement</span>
-          <h2 class="display-md mt-16">
-            Concret.<br>Actionnable.<br>
-            <em>Zéro bullshit.</em>
-          </h2>
-          <div class="divider mt-24 mb-24"></div>
-          <p class="text-lg muted mb-24">
-            J'ai créé JeuneUnique parce que je n'ai pas trouvé ce que je cherchais : des contenus qui vont droit au but, sans te vendre du rêve.
-          </p>
-          <p class="muted mb-32" style="font-size:0.95rem;line-height:1.7;">
-            Chaque formation est le résultat de ce que j'ai testé, échoué, optimisé. Pas de théorie académique, pas de motivation vide. Des plans d'action que tu peux appliquer dans la semaine.
-          </p>
-          <div class="includes-list">
-            <div class="includes-item">
-              <div class="includes-item__icon">✓</div>
-              <span>Paiement unique — pas d'abonnement</span>
-            </div>
-            <div class="includes-item">
-              <div class="includes-item__icon">✓</div>
-              <span>Accès à vie + toutes les mises à jour</span>
-            </div>
-            <div class="includes-item">
-              <div class="includes-item__icon">✓</div>
-              <span>Outils IA + prompts prêts à l'emploi inclus</span>
-            </div>
-            <div class="includes-item">
-              <div class="includes-item__icon">✓</div>
-              <span>Plan d'action applicable immédiatement</span>
-            </div>
-          </div>
-          <a href="a-propos.html" class="btn btn--outline mt-32">
-            En savoir plus sur le projet
-          </a>
-        </div>
-        <div class="reveal reveal--delay-2">
-          <!-- Placeholder photo / visuel -->
-          <div style="
-            background: linear-gradient(135deg, var(--navy-80) 0%, var(--navy-60) 100%);
-            border: 1px solid rgba(201,168,76,0.2);
-            border-radius: var(--radius-xl);
-            aspect-ratio: 4/5;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
-            position: relative;
-            overflow: hidden;
-          ">
-            <div style="
-              position:absolute;inset:0;
-              background: radial-gradient(ellipse at 30% 30%, rgba(201,168,76,0.08) 0%, transparent 60%);
-            "></div>
-            <div style="font-size:4rem;">🎙️</div>
-            <p class="label muted" style="text-align:center;position:relative;z-index:1;">
-              Photo portrait à placer ici<br>
-              <span style="color:var(--gray-600);font-size:0.65rem;margin-top:4px;display:block;">assets/images/portrait.jpg</span>
-            </p>
-          </div>
-        </div>
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="faq-left">
+      <div class="faq-big-num r">FAQ</div>
+      <div class="section-num-label r">04 — Questions</div>
+      <h2 class="faq-title r d1">Tu as des<br>questions ?</h2>
+      <p class="faq-sub r d2">Tout ce que tu dois savoir avant de te lancer.</p>
+    </div>
+    <div class="faq-list r">
+      <div class="faq-item">
+        <div class="faq-q">Les formations sont-elles adaptées aux débutants ? <span class="faq-icon">+</span></div>
+        <div class="faq-a"><div class="faq-a-in">Oui. Chaque formation part de zéro et t'accompagne étape par étape. Aucun prérequis nécessaire — juste la volonté de passer à l'action.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Comment j'accède à la formation après l'achat ? <span class="faq-icon">+</span></div>
+        <div class="faq-a"><div class="faq-a-in">Immédiatement par email. Tu reçois un lien de téléchargement pour l'e-book, la vidéo et tous les fichiers. Accès à vie, sans abonnement.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Est-ce remboursable si ça ne me convient pas ? <span class="faq-icon">+</span></div>
+        <div class="faq-a"><div class="faq-a-in">Oui — satisfait ou remboursé sous 7 jours, sans question posée.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Combien de temps avant de voir des résultats ? <span class="faq-icon">+</span></div>
+        <div class="faq-a"><div class="faq-a-in">Le plan d'action est conçu pour que tu puisses faire tes premières démarches dans la semaine. Plusieurs membres ont eu des résultats concrets en moins d'un mois.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Les mises à jour sont-elles incluses ? <span class="faq-icon">+</span></div>
+        <div class="faq-a"><div class="faq-a-in">Oui. Tu paies une seule fois et reçois toutes les mises à jour futures à vie, sans frais supplémentaires.</div></div>
       </div>
     </div>
   </section>
 
-  <!-- TÉMOIGNAGES -->
-  <section class="section section--darker">
-    <div class="container">
-      <div class="section-header section-header--center reveal">
-        <span class="label">Témoignages</span>
-        <h2 class="display-md mt-16">Ce qu'ils disent</h2>
-        <div class="divider divider--center mt-24"></div>
-      </div>
-      <div class="grid-3">
-        <div class="testimonial reveal reveal--delay-1">
-          <p class="testimonial__text">
-            "J'ai appliqué le guide automobile en 3 semaines. Première commission : 800€. La formation vaut 20× son prix."
-          </p>
-          <div class="testimonial__author">
-            <div class="testimonial__avatar">K</div>
-            <div>
-              <div class="testimonial__name">Karim B.</div>
-              <div class="testimonial__role">Formation Agence Auto</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial reveal reveal--delay-2">
-          <p class="testimonial__text">
-            "Le pack intermédiation m'a ouvert les yeux sur des opportunités que j'avais sous le nez depuis des mois. Clair, structuré, actionnable."
-          </p>
-          <div class="testimonial__author">
-            <div class="testimonial__avatar">S</div>
-            <div>
-              <div class="testimonial__name">Sarah L.</div>
-              <div class="testimonial__role">Pack Intermédiation</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial reveal reveal--delay-3">
-          <p class="testimonial__text">
-            "Enfin une formation sur l'investissement qui ne me prend pas pour un idiot. Le calculateur de patrimoine est génial."
-          </p>
-          <div class="testimonial__author">
-            <div class="testimonial__avatar">T</div>
-            <div>
-              <div class="testimonial__name">Thomas R.</div>
-              <div class="testimonial__role">De 0 à 100K en 5 ans</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA FINAL -->
-  <section class="section" style="padding:120px 24px;">
-    <div class="container--narrow text-center">
-      <div class="reveal">
-        <span class="label gold">Prêt à passer à l'action ?</span>
-        <h2 class="display-lg mt-16">
-          Choisis ton premier levier.<br>
-          <em>Lance-toi cette semaine.</em>
-        </h2>
-        <div class="divider divider--center mt-24 mb-24"></div>
-        <p class="muted text-lg mb-40">
-          Paiement unique. Accès à vie. Résultats concrets ou remboursement.
-        </p>
-        <a href="formations.html" class="btn btn--primary btn--lg">
-          Voir toutes les formations <span class="arrow">→</span>
-        </a>
-      </div>
+  <!-- CTA -->
+  <section class="cta-section">
+    <span class="cta-eyebrow r">Prêt à passer à l'action ?</span>
+    <h2 class="cta-title r d1">
+      Lance-toi<br>
+      <span class="outline">cette semaine.</span>
+    </h2>
+    <div class="cta-actions r d2">
+      <a href="formations.html" class="btn-gold" style="font-size:1rem;padding:16px 40px;">Voir les formations →</a>
+      <a href="a-propos.html" class="btn-line" style="font-size:1rem;padding:16px 32px;">En savoir plus</a>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer__inner">
-      <div class="footer__top">
-        <div>
-          <div class="footer__brand-name">Jeune<span>Unique</span></div>
-          <p class="footer__tagline">
-            Le média business pour les 20–30 ans ambitieux. Entreprendre et investir — sans théorie inutile.
-          </p>
-          <div class="footer__socials">
-            <a href="#" class="social-icon" aria-label="YouTube">▶</a>
-            <a href="#" class="social-icon" aria-label="Instagram">◈</a>
-            <a href="#" class="social-icon" aria-label="TikTok">♪</a>
-            <a href="#" class="social-icon" aria-label="Spotify">◎</a>
-          </div>
-        </div>
-        <div>
-          <div class="footer__col-title">Formations</div>
-          <div class="footer__links">
-            <a href="formations.html?univers=automobile"     class="footer__link">Automobile</a>
-            <a href="formations.html?univers=intermediation" class="footer__link">Intermédiation</a>
-            <a href="formations.html?univers=investissement" class="footer__link">Investissement</a>
-            <a href="formations.html?univers=mindset"        class="footer__link">Mindset</a>
-          </div>
-        </div>
-        <div>
-          <div class="footer__col-title">Contenu</div>
-          <div class="footer__links">
-            <a href="contenu-gratuit.html#youtube"  class="footer__link">YouTube</a>
-            <a href="contenu-gratuit.html#podcasts" class="footer__link">Podcasts</a>
-            <a href="contenu-gratuit.html#instagram" class="footer__link">Instagram</a>
-          </div>
-        </div>
-        <div>
-          <div class="footer__col-title">À propos</div>
-          <div class="footer__links">
-            <a href="a-propos.html" class="footer__link">Le projet</a>
-            <a href="a-propos.html#mission" class="footer__link">La mission</a>
-            <a href="mailto:contact@jeuneunique.fr" class="footer__link">Contact</a>
-          </div>
-        </div>
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">Jeune<span>Unique</span></div>
+        <p class="footer-tag">Le média business pour les 20–30 ans ambitieux.<br>Entreprendre et investir — sans théorie inutile.</p>
       </div>
-      <div class="footer__bottom">
-        <span>© 2025 JeuneUnique. Tous droits réservés.</span>
-        <span>Paiement sécurisé par Stripe</span>
+      <div class="footer-col">
+        <h4>Formations</h4>
+        <a href="formations.html?univers=automobile">Agence Automobile</a>
+        <a href="formations.html?univers=intermediation">Pack Intermédiation</a>
+        <a href="formations.html?univers=investissement">1er Appartement</a>
       </div>
+      <div class="footer-col">
+        <h4>Contenu</h4>
+        <a href="contenu-gratuit.html">YouTube</a>
+        <a href="contenu-gratuit.html#podcasts">Podcasts</a>
+        <a href="contenu-gratuit.html">Instagram / TikTok</a>
+      </div>
+      <div class="footer-col">
+        <h4>À propos</h4>
+        <a href="a-propos.html">Le projet</a>
+        <a href="mailto:contact@jeuneunique.fr">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 JeuneUnique. Tous droits réservés.</span>
+      <span>Paiement sécurisé par Stripe</span>
     </div>
   </footer>
 
   <script src="js/formations.js"></script>
-  <script src="js/main.js"></script>
   <script>
-    // Afficher les formations bestseller sur l'accueil
-    const featured = FORMATIONS.filter(f => f.bestseller).slice(0, 3);
-    const remaining = FORMATIONS.filter(f => !f.bestseller);
-    const toShow = [...featured, ...remaining].slice(0, 3);
-    document.getElementById('featured-formations').innerHTML =
-      toShow.map(renderFormationCard).join('');
+    // Cursor glow
+    const cursor = document.getElementById('cursor');
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top  = e.clientY + 'px';
+    });
+
+    // Formation cards horizontales
+    const tags = { automobile:'tag-auto', intermediation:'tag-inter', investissement:'tag-invest' };
+    const labels = { automobile:'🚗 Automobile', intermediation:'🤝 Intermédiation', investissement:'📈 Investissement' };
+    document.getElementById('form-list').innerHTML = FORMATIONS.map((f,i) => `
+      <a href="formation.html?id=${f.id}" class="form-card ${f.bestseller?'form-card--featured':''} r d${i+1}">
+        <div style="overflow:hidden;flex-shrink:0;">
+          ${f.cover ? `<img class="form-card__img" src="${f.cover}" alt="${f.titre}">` : `<div style="width:280px;height:100%;background:#1a1a2a;"></div>`}
+        </div>
+        <div class="form-card__body">
+          <div class="form-card__top">
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+              <span class="form-card__tag ${tags[f.univers]}">${labels[f.univers]}</span>
+              ${f.bestseller ? '<span class="form-card__featured-badge">Bestseller</span>' : ''}
+            </div>
+            <div class="form-card__name">${f.titre}</div>
+            <div class="form-card__desc">${f.soustitre}</div>
+          </div>
+          <div class="form-card__pills">
+            <span class="form-pill">📄 E-book PDF</span>
+            <span class="form-pill">🎬 Vidéo ${f.livrable.video}</span>
+            <span class="form-pill">🤖 ${f.livrable.prompts} prompts IA</span>
+          </div>
+        </div>
+        <div class="form-card__price-col">
+          ${f.bestseller ? '<div style="font-family:var(--sans);font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">⭐ Bestseller</div>' : '<div></div>'}
+          <div>
+            <div class="form-card__price">${f.prix}€</div>
+            <div class="form-card__once">Paiement unique<br>Accès à vie</div>
+          </div>
+          <div class="form-card__arrow">→</div>
+        </div>
+      </a>`).join('');
+
+    // FAQ
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.querySelector('.faq-q').addEventListener('click', () => {
+        const open = item.classList.toggle('open');
+        document.querySelectorAll('.faq-item').forEach(i => {
+          if(i !== item){ i.classList.remove('open'); i.querySelector('.faq-a').style.maxHeight='0'; }
+        });
+        item.querySelector('.faq-a').style.maxHeight = open
+          ? item.querySelector('.faq-a-in').offsetHeight + 'px' : '0';
+      });
+    });
+
+    // Scroll reveal
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('vis'); obs.unobserve(e.target); } });
+    }, { threshold:.08, rootMargin:'0px 0px -20px 0px' });
+    document.querySelectorAll('.r').forEach(el => obs.observe(el));
   </script>
 </body>
 </html>

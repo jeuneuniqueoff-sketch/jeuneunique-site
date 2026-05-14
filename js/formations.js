@@ -150,6 +150,42 @@ const BADGE_CLASS = {
   podcast:        'badge--podcast',
 };
 
+// Carte pricing pour la homepage
+function renderPricingCard(f, featured = false) {
+  const univers = UNIVERS.find(u => u.id === f.univers);
+  const badge   = BADGE_CLASS[f.univers] || '';
+  const features = [
+    `📄 E-book PDF complet`,
+    `🎬 Vidéo de formation (${f.livrable.video})`,
+    `🤖 ${f.livrable.prompts} prompts IA prêts`,
+    ...(f.livrable.outils || []).slice(0, 2)
+  ];
+  return `
+    <div class="pricing-card ${featured ? 'pricing-card--featured' : ''} reveal">
+      ${f.cover ? `
+        <div class="pricing-card__cover">
+          <img src="${f.cover}" alt="${f.titre}" loading="lazy">
+        </div>` : ''}
+      <span class="pricing-card__badge formation-card__badge ${badge}">
+        ${univers ? univers.icon : ''} ${univers ? univers.label : f.univers}
+        ${f.bestseller ? ' · ⭐ Bestseller' : ''}
+      </span>
+      <h3 class="pricing-card__name">${f.titre}</h3>
+      <p class="pricing-card__desc">${f.soustitre}</p>
+      <div class="pricing-card__price-block">
+        <div class="pricing-card__price">${f.prix}€</div>
+        <div class="pricing-card__price-note">Paiement unique · Accès à vie</div>
+      </div>
+      <ul class="pricing-card__features">
+        ${features.map(item => `<li>${item}</li>`).join('')}
+      </ul>
+      <a href="formation.html?id=${f.id}" class="btn ${featured ? 'btn--primary' : 'btn--outline'} pricing-card__cta">
+        Obtenir la formation <span class="arrow">→</span>
+      </a>
+    </div>
+  `;
+}
+
 // Générer une carte formation HTML
 function renderFormationCard(formation) {
   const badge = BADGE_CLASS[formation.univers] || '';
