@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>Politique de confidentialité — Studio JU</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Inter:wght@400;500;600;700&display=swap"
+  rel="stylesheet"
+/>
+<style>
+  :root {
+    --bg: #f6ece2;
+    --bg-panel: #efe1cc;
+    --ink: #002049;
+    --ink-soft: #4a5a74;
+    --accent: #a5701f;
+    --rule: rgba(0, 32, 73, 0.14);
+    --font-display: "Playfair Display", Georgia, serif;
+    --font-body: "Inter", -apple-system, "Segoe UI", sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #00152f;
+      --bg-panel: #041c3a;
+      --ink: #f6ece2;
+      --ink-soft: #b9c4d6;
+      --accent: #e3ae63;
+      --rule: rgba(246, 236, 226, 0.16);
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .band {
+    background: var(--bg-panel);
+    border-bottom: 1px solid var(--rule);
+    padding: 48px 24px 40px;
+  }
+
+  .wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .band .wrap { padding: 0; }
+
+  .eyebrow {
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 14px;
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 700;
+    font-size: clamp(1.9rem, 4.5vw, 2.6rem);
+    line-height: 1.15;
+    margin: 0 0 10px;
+    text-wrap: balance;
+    color: var(--ink);
+  }
+
+  .updated { font-size: 0.85rem; color: var(--ink-soft); margin: 0; }
+
+  .intro { font-size: 1.05rem; color: var(--ink); max-width: 60ch; margin: 28px 0 0; }
+
+  main { padding: 48px 24px 80px; }
+
+  section { margin-bottom: 40px; }
+  section:last-of-type { margin-bottom: 0; }
+
+  .section-num {
+    display: inline-block;
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+
+  h2 {
+    font-weight: 700;
+    font-size: 1.15rem;
+    margin: 0 0 12px;
+    color: var(--ink);
+    border-top: 1px solid var(--rule);
+    padding-top: 20px;
+  }
+
+  section p, section li { color: var(--ink); font-size: 0.98rem; max-width: 62ch; }
+  section p + p { margin-top: 12px; }
+
+  ul { margin: 10px 0 0; padding-left: 20px; }
+  li + li { margin-top: 6px; }
+
+  strong { color: var(--ink); font-weight: 600; }
+
+  a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-color: rgba(165, 112, 31, 0.35);
+    text-underline-offset: 2px;
+  }
+  a:hover { text-decoration-color: var(--accent); }
+
+  footer { border-top: 1px solid var(--rule); padding: 28px 24px 48px; }
+
+  footer .wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+  }
+
+  footer strong { color: var(--ink-soft); font-weight: 600; }
+</style>
+</head>
+<body>
+
+<div class="band">
+  <div class="wrap">
+    <p class="eyebrow">Jeune Unique · Studio JU</p>
+    <h1>Politique de confidentialité</h1>
+    <p class="updated">Dernière mise à jour : 2 septembre 2026</p>
+    <p class="intro">
+      Studio JU est un outil interne, développé et utilisé par Jeune Unique, qui sert à préparer
+      et publier ses propres vidéos sur YouTube, Instagram et TikTok. Cette page explique quelles
+      données il manipule et comment.
+    </p>
+  </div>
+</div>
+
+<main class="wrap">
+  <section>
+    <span class="section-num">01</span>
+    <h2>Qui utilise cet outil</h2>
+    <p>
+      Studio JU n'a qu'un seul utilisateur : Jeune Unique, propriétaire des comptes YouTube,
+      Instagram et TikTok concernés. Ce n'est pas un service ouvert au public — il n'y a pas de
+      création de compte, pas d'inscription, pas d'utilisateurs tiers.
+    </p>
+  </section>
+
+  <section>
+    <span class="section-num">02</span>
+    <h2>Données traitées</h2>
+    <p>L'outil manipule uniquement :</p>
+    <ul>
+      <li>les fichiers vidéo choisis par Jeune Unique pour être publiés ;</li>
+      <li>les métadonnées associées (titre, description, date et heure de publication) ;</li>
+      <li>les identifiants d'autorisation (jetons OAuth) délivrés par YouTube, Instagram/Meta et
+        TikTok pour publier au nom du compte Jeune Unique.</li>
+    </ul>
+    <p>
+      Aucune donnée concernant des tiers n'est collectée. Aucune donnée n'est vendue, partagée ou
+      utilisée à des fins publicitaires.
+    </p>
+  </section>
+
+  <section>
+    <span class="section-num">03</span>
+    <h2>Où vivent ces données</h2>
+    <p>
+      Tout est stocké localement, sur l'ordinateur de Jeune Unique — vidéos, planification et
+      jetons d'autorisation ne transitent par aucun serveur tiers, à l'exception des appels
+      strictement nécessaires aux API officielles de YouTube, Meta (Instagram) et TikTok pour
+      effectuer la publication demandée, et de Cloudinary, utilisé uniquement comme hébergement
+      temporaire d'une vidéo le temps que l'API Instagram puisse la récupérer.
+    </p>
+  </section>
+
+  <section>
+    <span class="section-num">04</span>
+    <h2>Utilisation des API TikTok, Meta et YouTube</h2>
+    <p>
+      Studio JU utilise la <strong>TikTok Content Posting API</strong>, la <strong>Meta Graph
+      API</strong> (Instagram) et la <strong>YouTube Data API</strong> uniquement pour publier,
+      au nom de Jeune Unique et sur autorisation explicite de Jeune Unique, du contenu vidéo déjà
+      préparé par Jeune Unique. Aucune donnée récupérée via ces API n'est réutilisée à d'autres
+      fins que l'affichage du statut de publication dans l'outil.
+    </p>
+  </section>
+
+  <section>
+    <span class="section-num">05</span>
+    <h2>Conservation et suppression</h2>
+    <p>
+      Les données restent tant que Jeune Unique les conserve localement. Supprimer un élément
+      dans Studio JU l'efface de la file d'attente locale ; révoquer l'accès depuis les paramètres
+      du compte YouTube, Meta ou TikTok invalide immédiatement les jetons d'autorisation
+      correspondants.
+    </p>
+  </section>
+
+  <section>
+    <span class="section-num">06</span>
+    <h2>Contact</h2>
+    <p>
+      Pour toute question sur cette politique :
+      <a href="mailto:jeuneuniqueoff@gmail.com">jeuneuniqueoff@gmail.com</a>
+    </p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span><strong>Studio JU</strong> — outil interne Jeune Unique</span>
+    <span>jeuneuniqueoff@gmail.com</span>
+  </div>
+</footer>
+
+</body>
+</html>

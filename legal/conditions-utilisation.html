@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>Conditions d'utilisation — Studio JU</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Inter:wght@400;500;600;700&display=swap"
+  rel="stylesheet"
+/>
+<style>
+  :root {
+    --bg: #f6ece2;
+    --bg-panel: #efe1cc;
+    --ink: #002049;
+    --ink-soft: #4a5a74;
+    --accent: #a5701f;
+    --rule: rgba(0, 32, 73, 0.14);
+    --font-display: "Playfair Display", Georgia, serif;
+    --font-body: "Inter", -apple-system, "Segoe UI", sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #00152f;
+      --bg-panel: #041c3a;
+      --ink: #f6ece2;
+      --ink-soft: #b9c4d6;
+      --accent: #e3ae63;
+      --rule: rgba(246, 236, 226, 0.16);
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .band {
+    background: var(--bg-panel);
+    border-bottom: 1px solid var(--rule);
+    padding: 48px 24px 40px;
+  }
+
+  .wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .band .wrap { padding: 0; }
+
+  .eyebrow {
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 14px;
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 700;
+    font-size: clamp(1.9rem, 4.5vw, 2.6rem);
+    line-height: 1.15;
+    margin: 0 0 10px;
+    text-wrap: balance;
+    color: var(--ink);
+  }
+
+  .updated { font-size: 0.85rem; color: var(--ink-soft); margin: 0; }
+
+  .intro { font-size: 1.05rem; color: var(--ink); max-width: 60ch; margin: 28px 0 0; }
+
+  main { padding: 48px 24px 80px; }
+
+  section { margin-bottom: 40px; }
+  section:last-of-type { margin-bottom: 0; }
+
+  .section-num {
+    display: inline-block;
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+
+  h2 {
+    font-weight: 700;
+    font-size: 1.15rem;
+    margin: 0 0 12px;
+    color: var(--ink);
+    border-top: 1px solid var(--rule);
+    padding-top: 20px;
+  }
+
+  section p, section li { color: var(--ink); font-size: 0.98rem; max-width: 62ch; }
+  section p + p { margin-top: 12px; }
+
+  ul { margin: 10px 0 0; padding-left: 20px; }
+  li + li { margin-top: 6px; }
+
+  strong { color: var(--ink); font-weight: 600; }
+
+  a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-color: rgba(165, 112, 31, 0.35);
+    text-underline-offset: 2px;
+  }
+  a:hover { text-decoration-color: var(--accent); }
+
+  footer { border-top: 1px solid var(--rule); padding: 28px 24px 48px; }
+
+  footer .wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+  }
+
+  footer strong { color: var(--ink-soft); font-weight: 600; }
+</style>
+</head>
+<body>
+
+<div class="band">
+  <div class="wrap">
+    <p class="eyebrow">Jeune Unique · Studio JU</p>
+    <h1>Conditions d'utilisation</h1>
+    <p class="updated">Dernière mise à jour : 2 septembre 2026</p>
+    <p class="intro">
+      Studio JU est un outil de planification et de publication vidéo développé pour un usage
+      strictement interne à Jeune Unique. Ces conditions décrivent ce cadre d'usage.
+    </p>
+  </div>
+</div>
+
+<main class="wrap">
+  <section>
+    <span class="section-num">01</span>
+    <h2>Objet</h2>
+    <p>
+      Studio JU permet à Jeune Unique de préparer des vidéos, de les décrire et de les publier —
+      immédiatement ou à une date programmée — sur ses propres comptes YouTube, Instagram et
+      TikTok, via les API officielles de ces plateformes.
+    </p>
+  </section>
+
+  <section>
+    <span class="section-num">02</span>
+    <h2>Usage autorisé</h2>
+    <p>
+      L'outil est réservé à Jeune Unique pour la gestion de ses propres contenus, sur ses propres
+      comptes. Il n'est pas distribué, revendu ni mis à disposition d'autres utilisateurs ou
+      organisations.
+    </p>
+  </section>
+
+  <section>
+    <span class="section-num">03</span>
+    <h2>Contenu publié</h2>
+    <p>
+      Jeune Unique reste seul responsable du contenu qu'il choisit de publier via Studio JU, et du
+      respect des règles de contenu propres à chaque plateforme (YouTube, Instagram/Meta, TikTok).
+      L'outil ne modifie ni ne modère le contenu fourni — il se contente de le transmettre aux API
+      de publication.
+    </p>
+  </section>
+
+  <section>
+    <span class="section-num">04</span>
+    <h2>Disponibilité</h2>
+    <p>
+      Studio JU est fourni « en l'état », sans garantie de disponibilité continue. La publication
+      effective sur chaque plateforme dépend de la disponibilité et des conditions des API tierces
+      (YouTube, Meta, TikTok), sur lesquelles Studio JU n'a pas de contrôle direct.
+    </p>
+  </section>
+
+  <section>
+    <span class="section-num">05</span>
+    <h2>Modifications</h2>
+    <p>
+      Ces conditions peuvent évoluer avec l'outil lui-même. La version en vigueur est toujours
+      celle publiée à cette adresse.
+    </p>
+  </section>
+
+  <section>
+    <span class="section-num">06</span>
+    <h2>Contact</h2>
+    <p>
+      Pour toute question : <a href="mailto:jeuneuniqueoff@gmail.com">jeuneuniqueoff@gmail.com</a>
+    </p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span><strong>Studio JU</strong> — outil interne Jeune Unique</span>
+    <span>jeuneuniqueoff@gmail.com</span>
+  </div>
+</footer>
+
+</body>
+</html>
